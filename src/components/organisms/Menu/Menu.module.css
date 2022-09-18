@@ -1,0 +1,105 @@
+#root {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 22px;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #210037;
+  z-index: 2;
+}
+
+#logoSpan {
+  margin-right: 12px;
+}
+
+#navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+
+#nav {
+  position: absolute;
+  top: 21.5px;
+}
+
+#menuContainer {
+  background: #e9e9e9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.31);
+  border-radius: 5px;
+
+  width: 112px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.menuItem {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+
+  list-style-type: none;
+
+  color: #202020;
+
+  width: 100%;
+
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: #d7225e;
+  color: #e9e9e9;
+}
+
+.menuItemLink {
+  text-decoration: none;
+  color: #202020;
+}
+
+#hr {
+  border: 1px solid #cccaca;
+  margin: 0;
+}
+
+#notLogged {
+  text-align: right;
+  margin-right: 22px;
+}
+
+#loggedContainer {
+  display: grid;
+  grid-template-areas:
+    "welcome avatar"
+    "logout avatar";
+
+  cursor: default;
+  padding: 0;
+}
+
+#welcome {
+  grid-area: welcome;
+  justify-self: end;
+}
+
+#logout {
+  grid-area: logout;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 10px;
+  text-decoration-line: underline;
+  justify-self: end;
+}
+
+#avatar {
+  grid-area: avatar;
+  justify-self: center;
+  align-self: center;
+}
