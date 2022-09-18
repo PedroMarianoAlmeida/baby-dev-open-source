@@ -3,19 +3,17 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import StackBadge from "./StackBadge";
 
 export default {
-  title: "Components/StackBadge",
-  component: StackBadge
+  title: "Atoms/StackBadge",
+  component: StackBadge,
 } as ComponentMeta<typeof StackBadge>;
 
 const Template: ComponentStory<typeof StackBadge> = (args) => (
-  <StackBadge 
-    {...args}
-  />
+  <StackBadge {...args} />
 );
 
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
 
-Primary.args = {
-  name: "React"
+Default.args = {
+  name: "React",
+  isSelected: false,
 };
-
