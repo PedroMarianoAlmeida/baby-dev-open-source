@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof Menu>;
 
 const Template: ComponentStory<typeof Menu> = (args) => <Menu />;
-console.log(Menu);
+
 export const Default = Template.bind({});
