@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Menu.module.css";
 
-import useDebounce from "../../../hooks/useDebounce";
+import useDebounce from "src/hooks/useDebounce";
 import Login from "./Login";
 import MenuItem from "./MenuItem";
 import Logo from "./Logo";
