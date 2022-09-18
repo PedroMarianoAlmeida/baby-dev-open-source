@@ -1,5 +1,5 @@
-import { Typography } from "../components/atoms";
-import StackBadge from "../components/atoms/StackBadge";
+import { Typography } from "src/components/atoms";
+import StackBadge from "@atoms/StackBadge";
 
 export default function Home() {
   return (
