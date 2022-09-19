@@ -18,7 +18,7 @@ Portal de vagas tech focado em primeiras oportunidades. Vagas serão adicionadas
 ## Contribuições
 
 O projeto está aberto a contribuições, veja as issues abertas!
-(caso seja em código, ver arquivo **Guia do Código.md** para entender as regras)
+(caso seja em código, ver arquivo [**Guia do Código.md**](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/blob/main/Guia%20do%20C%C3%B3digo.md) para entender as regras)
 
 ## Tech Stack
 
@@ -30,22 +30,12 @@ _Sem framework CSS, utilizando os CSS Modules nativos do Next_
 
 ## Rode na sua máquina
 
-Clone o projeto: ```bash
-  git clone https://github.com/PedroMarianoAlmeida/baby-dev-open-source.git
-```
+Clone o projeto: ```git clone https://github.com/PedroMarianoAlmeida/baby-dev-open-source.git```
 
-Abra o diretório do projeto: ```bash
-  cd my-project
-```
+Abra o diretório do projeto: ```cd my-project```
 
-Instale as dependências (com **yarn**): ```bash
-  yarn
-```
+Instale as dependências (com **yarn**): ```yarn```
 
-Rode o projeto localmente: ```bash
-  yarn dev
-```
+Rode o projeto localmente: ```yarn dev```
 
-Rode o Storybook do projeto localmente ```bash
-  yarn storybook
-```
+Rode o Storybook do projeto localmente ```yarn storybook```
