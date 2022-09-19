@@ -1,0 +1,11 @@
+#root {
+  min-height: 10px;
+  min-width: 10px;
+  height: 100%;
+  width: 100%;
+
+  padding: 12px;
+
+  background: #f0f0f0;
+  border-radius: 5px;
+}
