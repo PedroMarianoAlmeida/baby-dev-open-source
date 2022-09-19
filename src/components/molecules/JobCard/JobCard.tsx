@@ -1,6 +1,7 @@
 import Image from "next/image";
 import StackBadge from "@atoms/StackBadge";
 import styles from "./JobCard.module.css";
+import Box from "@atoms/Box";
 
 interface JobCardProps {
   cardData: {
@@ -24,28 +25,30 @@ const JobCard = ({ cardData }: JobCardProps) => {
 
   return (
     <div id={styles.root}>
-      <div id={styles.content}>
-        <div id={styles.logoTitle}>
-          <Image
-            src={logo}
-            alt={name}
-            id={styles.logo}
-            width={50}
-            height={50}
-          />
-          <div id={styles.title}>
-            <h4 id={styles.name}>{name}</h4>
-            <h3 id={styles.job}>{title}</h3>
+      <Box>
+        <div id={styles.content}>
+          <div id={styles.logoTitle}>
+            <Image
+              src={logo}
+              alt={name}
+              id={styles.logo}
+              width={50}
+              height={50}
+            />
+            <div id={styles.title}>
+              <h4 id={styles.name}>{name}</h4>
+              <h3 id={styles.job}>{title}</h3>
+            </div>
           </div>
+          <h5 id={styles.place}>{place}</h5>
         </div>
-        <h5 id={styles.place}>{place}</h5>
-      </div>
-      <hr />
-      <div id={styles.stack}>
-        {stack.map((tec) => (
-          <StackBadge name={tec} key={tec} />
-        ))}
-      </div>
+        <hr />
+        <div id={styles.stack}>
+          {stack.map((tec) => (
+            <StackBadge name={tec} key={tec} />
+          ))}
+        </div>
+      </Box>
     </div>
   );
 };

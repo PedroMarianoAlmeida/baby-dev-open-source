@@ -1,9 +1,5 @@
 #root {
-  background: #f0f0f0;
-  border-radius: 5px;
-  width: 100%;
   max-width: 358px;
-  padding: 10px;
   position: relative;
 }
 
@@ -39,7 +35,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 #place {
