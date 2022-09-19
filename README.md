@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-## Getting Started
+![Open Source](https://img.shields.io/badge/Open%20Source-Contribua%20%F0%9F%98%8E-yellowgreen)
 
-First, run the development server:
+# Baby Dev
 
-```bash
-npm run dev
-# or
-yarn dev
+Portal de vagas tech focado em primeiras oportunidades. Vagas serão adicionadas pelos "curadores", pessoas que vasculham a rede em buscam dessas oportunidades e divulgarão aqui (citando as fontes)
+
+## Demo
+
+- Projeto em produção: <https://vagasbabydev.vercel.app/>
+- [Design (Figma)](https://www.figma.com/file/mcsd2v0thC57nfBPxt1VAM/Baby-Dev?node-id=12%3A230)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Contribuições
+
+O projeto está aberto a contribuições, veja as issues abertas!
+(caso seja em código, ver arquivo **Guia do Código.md** para entender as regras)
+
+## Tech Stack
+
+- **Next** (e todo seu ecossistema: React, JavaScript, HTML, CSS, etc)
+- **Storybook**: Para facilitar as contribuições!
+- **Atomic Design**: Não é um framework nem nada, mas é uma boa prática relevante de ser incluída 😉
+
+_Sem framework CSS, utilizando os CSS Modules nativos do Next_
+
+## Rode na sua máquina
+
+Clone o projeto: ```bash
+  git clone https://github.com/PedroMarianoAlmeida/baby-dev-open-source.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra o diretório do projeto: ```bash
+  cd my-project
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Instale as dependências (com **yarn**): ```bash
+  yarn
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Rode o projeto localmente: ```bash
+  yarn dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Rode o Storybook do projeto localmente ```bash
+  yarn storybook
+```
