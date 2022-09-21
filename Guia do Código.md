@@ -37,3 +37,7 @@ Curtos (com poucas alterações), e um título que explica o que foi feito
 - Faça suas alterações
 - Suba o código `git push origin nome-branch`
 - Abra o Github online e faça um Merge Request - já vai aparecer essa opção pra você (explicando as mudanças)
+
+### Usou algum vídeo/blog/stack overflow?
+
+Atualize a sessão **Links Úteis** do Readme
