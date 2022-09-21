@@ -11,7 +11,7 @@ Para ver todos (e até criar mais se necessário), ir no arquivo **tsconfig.json
 
 Então usar importações relativas apenas dentro do universo do componente (o que será sempre arrastando junto sem _quebrar_ 🥰)
 
-## Novo Componente?
+## Vai criar ou Editar um Componente?
 
 ### Reutilize código!
 
