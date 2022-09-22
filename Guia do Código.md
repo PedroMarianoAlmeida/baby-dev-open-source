@@ -25,6 +25,9 @@ Cada novo componente deve ficar dentro de uma pasta dentro de componentes (**ato
 - **NomeDoComponente.tsx**: Componente principal que será pego pelo index.tsx da pasta com a implementação, é o seu componente (ou a porta de entrada, onde chama os outros)
 - **NomeDoComopnente.module.css**: Módulo CSS onde fica o estilo, no arquivo principal ele deve ser importado com o código.
 - **NomeDoComopnente.stories.tsx**: Arquivo que carrega no Storybook (alterar lá dentro o endereço do import, e o _title_ - e preferencialmente o nome do componente também)
+- **NomeDoComopnente.test.tsx**: Arquivo com o test do componente
+
+Obs: Se o componente tiver _componentes filhos_ poderão ter outras pastas com essa mesma estrutura (mas se não for fazer tudo pode manter tudo em uma só - mesmo com outros componentes, ou .test ou .stories ou .modules, desde que não passe de 10 arquivos na pasta)
 
 ### Commits
 
