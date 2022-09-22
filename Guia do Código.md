@@ -35,5 +35,10 @@ Curtos (com poucas alterações), e um título que explica o que foi feito
 - Clone o projeto e rode na sua máquina (explicado no readme)
 - Crie uma nova branch e vá pra ela: `git checkout -b nome-branch`
 - Faça suas alterações
+- Rode os testes para garantir que não tem nada quebrado
 - Suba o código `git push origin nome-branch`
 - Abra o Github online e faça um Merge Request - já vai aparecer essa opção pra você (explicando as mudanças)
+
+### Usou algum vídeo/blog/stack overflow?
+
+Atualize a sessão **Links Úteis** do Readme
