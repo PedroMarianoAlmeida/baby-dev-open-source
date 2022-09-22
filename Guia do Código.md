@@ -37,7 +37,7 @@ Curtos (com poucas alterações), e um título que explica o que foi feito
 - Faça suas alterações
 - Rode os testes para garantir que não tem nada quebrado
 - Suba o código `git push origin nome-branch`
-- Abra o Github online e faça um Merge Request - já vai aparecer essa opção pra você (explicando as mudanças)
+- Abra o Github online e faça um Pull Request - já vai aparecer essa opção pra você (explicando as mudanças - veja [esse exemplo](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/pull/3))
 
 ### Usou algum vídeo/blog/stack overflow?
 
