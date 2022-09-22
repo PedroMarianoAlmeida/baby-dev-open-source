@@ -24,6 +24,7 @@ O projeto está aberto a contribuições, veja as issues abertas!
 
 - **Next** (e todo seu ecossistema: React, JavaScript, HTML, CSS, etc)
 - **Storybook**: Para facilitar as contribuições!
+- **Jest + React Testing Library**: Testes unitários!
 - **Atomic Design**: Não é um framework nem nada, mas é uma boa prática relevante de ser incluída 😉
 
 _Sem framework CSS, utilizando os CSS Modules nativos do Next_
@@ -39,6 +40,8 @@ Instale as dependências (com **yarn**): ```yarn```
 Rode o projeto localmente: ```yarn dev```
 
 Rode o Storybook do projeto localmente ```yarn storybook```
+
+Rode os testes do projeto localmente: ```yarn test```
 
 ## Contribuidores
 
@@ -66,6 +69,9 @@ Aquele lance do import ter ```import { alguma coisa } from '@issoÉPathMapping'`
 #### Utilizado para o Path Map do Typescript funcionar ([commit](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/commit/29124a2a1ededd8194d412e9dd88b6525af5c968))
 - <https://storybook.js.org/docs/react/builders/webpack>
 
+#### Jest
+- <https://blog.logrocket.com/testing-next-js-apps-jest/>: Exemplo passo a passo
+- <https://nextjs.org/docs/testing#setting-up-jest-with-the-rust-compiler>: Que referenciou a documentação 🤡
 #### Outros
 
 - <https://readme.so/>: Usei pro readme, e como editor online de markdown
