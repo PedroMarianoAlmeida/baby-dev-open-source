@@ -85,7 +85,7 @@ const OptionGroup = ({
             onClick={() => handleClick(option)}
             className="cursor-pointer"
           >
-            <StackBadge name={option} isSelected={selected.includes(option)} />
+            {/* <StackBadge name={option} isSelected={selected.includes(option)} /> */}
           </div>
         ))}
       </div>
