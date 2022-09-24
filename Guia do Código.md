@@ -7,7 +7,7 @@ Esse projeto tem o Path Map para evitar os
 `import AlgumaCoisa from "../../../labirinto-de-rotas"`
 
 Tudo que for dentro da pasta src pode começar com `src/` (sem o ponto mesmo), mas muitas coisas já tá melhor mapeado e podemos trocar por exemplo o `src/components/atoms/MeuComponente` por `@atoms/MeuComponente`
-Para ver todos (e até criar mais se necessário), ir no arquivo **tsconfig.json** e ver a propridade **paths**
+Para ver todos (e até criar mais se necessário), ir no arquivo **tsconfig.json** e ver a propridade **paths** (ir também no arquivo **jest.config.js** e ver a propridade **moduleNameMapper**)
 
 Então usar importações relativas apenas dentro do universo do componente (o que será sempre arrastando junto sem _quebrar_ 🥰)
 
