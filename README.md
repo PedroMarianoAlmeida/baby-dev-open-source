@@ -31,17 +31,17 @@ _Sem framework CSS, utilizando os CSS Modules nativos do Next_
 
 ## Rode na sua máquina
 
-Clone o projeto: ```git clone https://github.com/PedroMarianoAlmeida/baby-dev-open-source.git```
+Clone o projeto: `git clone https://github.com/PedroMarianoAlmeida/baby-dev-open-source.git`
 
-Abra o diretório do projeto: ```cd my-project```
+Abra o diretório do projeto: `cd my-project`
 
-Instale as dependências (com **yarn**): ```yarn```
+Instale as dependências (com **yarn**): `yarn`
 
-Rode o projeto localmente: ```yarn dev```
+Rode o projeto localmente: `yarn dev`
 
-Rode o Storybook do projeto localmente ```yarn storybook```
+Rode o Storybook do projeto localmente `yarn storybook`
 
-Rode os testes do projeto localmente: ```yarn test```
+Rode os testes do projeto localmente: `yarn test`
 
 ## Contribuidores
 
@@ -53,7 +53,9 @@ Não apareceram porque reescrevi o repositório e perdi o commits deles =/
 # Links Úteis
 
 ### Path Mapping
-Aquele lance do import ter ```import { alguma coisa } from '@issoÉPathMapping'```
+
+Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
+
 - <https://blog.rocketseat.com.br/path-mapping-typescript/>
 
 ### Storybook
@@ -64,14 +66,19 @@ Aquele lance do import ter ```import { alguma coisa } from '@issoÉPathMapping'`
 - <https://storybook.js.org/docs/react/get-started/whats-a-story>
 
 #### Utilizado para adicionar os estilos globais no Storybook([commit](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/commit/8c7fc82b060510dc65500059ab2bf56863a3fe1d#diff-98b614e1838b171ee71c04450a8f1a562753193fb7d4f53a4de8b9b5a7e980ee)), e acho que vai ser pra resolver o problema da imagem
+
 - <https://www.youtube.com/watch?v=i5tvZ9f7gJw&t=203s>
 
 #### Utilizado para o Path Map do Typescript funcionar ([commit](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/commit/29124a2a1ededd8194d412e9dd88b6525af5c968))
+
 - <https://storybook.js.org/docs/react/builders/webpack>
 
 #### Jest
+
 - <https://blog.logrocket.com/testing-next-js-apps-jest/>: Exemplo passo a passo
 - <https://nextjs.org/docs/testing#setting-up-jest-with-the-rust-compiler>: Que referenciou a documentação 🤡
+- [configurando Jest com o TS Path Mapping](https://jestjs.io/docs/configuration#modulenamemapper-objectstring-string--arraystring) (mas veio do [stackoverflow](https://stackoverflow.com/questions/52860868/typescript-paths-not-resolving-when-running-jest) 😉)
+
 #### Outros
 
 - <https://readme.so/>: Usei pro readme, e como editor online de markdown
