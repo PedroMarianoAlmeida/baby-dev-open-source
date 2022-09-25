@@ -1,5 +1,24 @@
 # Guia do Código
 
+Desde já muito obrigado, se você está aqui é porque tem interesse em contribuir com o projeto! E esse documento explica procedimentos e alguns padrões
+
+## Antes do **Mão no Código**
+
+- Encontre uma tarefa legal em [issues](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/issues)
+- Verifique se não há um comentário de alguém falando que vai fazer (e se tiver veja também se não é muito antigo, pode perguntar se a pessoa conseguiu ou não, ou se parou no meio e precisa de ajuda, etc)
+- Caso esteja só a descrição sem nada lá, escreve que está começando
+
+*Isso é para evitar que duas pessoas peguem a mesma tarefa simultaneamente*
+
+### Procedimento para contribuição
+
+- Clone o projeto e rode na sua máquina (explicado no readme)
+- Crie uma nova branch e vá pra ela: `git checkout -b nome-branch`
+- Faça suas alterações
+- Rode os testes para garantir que não tem nada quebrado
+- Suba o código `git push origin nome-branch`
+- Abra o Github online e faça um Pull Request - já vai aparecer essa opção pra você (explicando as mudanças - veja [esse exemplo](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/pull/3))
+
 ## Atenção nas importações
 
 Esse projeto tem o Path Map para evitar os
@@ -32,15 +51,6 @@ Obs: Se o componente tiver _componentes filhos_ poderão ter outras pastas com e
 ### Commits
 
 Curtos (com poucas alterações), e um título que explica o que foi feito
-
-### Procedimento para contribuição
-
-- Clone o projeto e rode na sua máquina (explicado no readme)
-- Crie uma nova branch e vá pra ela: `git checkout -b nome-branch`
-- Faça suas alterações
-- Rode os testes para garantir que não tem nada quebrado
-- Suba o código `git push origin nome-branch`
-- Abra o Github online e faça um Pull Request - já vai aparecer essa opção pra você (explicando as mudanças - veja [esse exemplo](https://github.com/PedroMarianoAlmeida/baby-dev-open-source/pull/3))
 
 ### Usou algum vídeo/blog/stack overflow?
 
