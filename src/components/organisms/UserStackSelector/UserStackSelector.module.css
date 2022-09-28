@@ -19,10 +19,24 @@
 
 #selectedContainer {
   margin-left: 12px;
-
+  overflow-x: scroll;
   display: flex;
-  flex-wrap: wrap;
   gap: 4px;
+  padding-bottom: 6px;
+}
+/* ESTILIZAÇÃO DA SCROLLBAR */
+#selectedContainer::-webkit-scrollbar {
+  width: 12px;
+  height: 10px;
+}
+#selectedContainer::-webkit-scrollbar-track {
+  background: rgba(202, 200, 196, 0.295);
+  border-radius: 20px;
+}
+#selectedContainer::-webkit-scrollbar-thumb { 
+  background-color: #44036e;
+  border-radius: 20px;     
+  border: 2px solid rgb(255, 255, 255); 
 }
 
 #stackContainer {
@@ -30,7 +44,6 @@
   height: 300px;
   left: 196px;
   top: 146px;
-
   background: #f0f0f0;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.45);
   border-radius: 10px;
