@@ -1,33 +1,40 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import styles from "./JobPostForm.module.css";
 
-type Inputs = {
-  example: string;
-  exampleRequired: string;
-};
+interface IFormInputs {
+  firstName: string;
+  age: number;
+}
+
+const schema = yup
+  .object({
+    firstName: yup.string().required(),
+    age: yup.number().positive().integer().required(),
+  })
+  .required();
 
 const JobPostForm = (props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
-  console.log(watch("example")); // watch input value by passing the name of it
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (data: IFormInputs) => console.log(data);
 
   return (
     <div id={styles.root}>
       <p>JobPostForm</p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
-        <input defaultValue="test" {...register("example")} />
+        <input {...register("firstName")} />
+        <p>{errors.firstName?.message}</p>
 
-        {/* include validation with required or other standard HTML validation rules */}
-        <input {...register("exampleRequired", { required: true })} />
-        {/* errors will return when field validation fails  */}
-        {errors.exampleRequired && <span>This field is required</span>}
+        <input {...register("age")} />
+        <p>{errors.age?.message}</p>
 
         <input type="submit" />
       </form>
