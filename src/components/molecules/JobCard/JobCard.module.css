@@ -45,19 +45,6 @@
 
 #stack {
   display: flex;
-  overflow-x: scroll;
   padding-bottom: 10px;
-}
-#stack::-webkit-scrollbar {
-  width: 12px;
-  height: 13px;
-}
-#stack::-webkit-scrollbar-track {
-  background: rgba(202, 200, 196, 0.295);
-  border-radius: 20px;
-}
-#stack::-webkit-scrollbar-thumb { 
-  background-color: #44036e;
-  border-radius: 20px;     
-  border: 2px solid rgb(255, 255, 255); 
+  flex-wrap: wrap;
 }
