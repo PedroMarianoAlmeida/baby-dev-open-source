@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -13,14 +13,12 @@ interface IFormInputs {
   title: string;
   url: string;
   source: string;
-  firstName: string;
-  age: number;
 }
 
 const schema = yup
   .object({
-    firstName: yup.string().required(),
-    age: yup.number().positive().integer().required(),
+    company: yup.string().required(),
+    description: yup.number().positive().integer().required(),
   })
   .required();
 
@@ -41,11 +39,11 @@ const JobPostForm = (props) => {
     <div id={styles.root}>
       <p>JobPostForm</p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("firstName")} />
-        <p>{errors.firstName?.message}</p>
+        <input {...register("company")} placeholder="Empresa" />
+        <p>{errors.company?.message}</p>
 
-        <input {...register("age")} />
-        <p>{errors.age?.message}</p>
+        {/* <input {...register("description")} placeholder="Descrição da vaga" />
+        <p>{errors.description?.message}</p> */}
 
         <input type="submit" />
       </form>
