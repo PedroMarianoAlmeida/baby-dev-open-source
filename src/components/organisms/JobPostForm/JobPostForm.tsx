@@ -5,6 +5,14 @@ import * as yup from "yup";
 import styles from "./JobPostForm.module.css";
 
 interface IFormInputs {
+  company: string;
+  description: string;
+  location: string;
+  requisites: string[];
+  stack: string[];
+  title: string;
+  url: string;
+  source: string;
   firstName: string;
   age: number;
 }
@@ -24,7 +32,10 @@ const JobPostForm = (props) => {
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: IFormInputs) => console.log(data);
+  const onSubmit = (data: IFormInputs) => {
+    //add extra data here: closed, createdAt, modifiedAt, curator, who indicates, blob
+    console.log(data);
+  };
 
   return (
     <div id={styles.root}>
