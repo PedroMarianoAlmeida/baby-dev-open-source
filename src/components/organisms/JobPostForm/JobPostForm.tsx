@@ -4,6 +4,8 @@ import * as yup from "yup";
 
 import styles from "./JobPostForm.module.css";
 
+import TextInput from "@atoms/formComponents/TextInput";
+
 interface IFormInputs {
   company: string;
   description: string;
@@ -41,6 +43,13 @@ const JobPostForm = (props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register("company")} placeholder="Empresa" />
         <p>{errors.company?.message}</p>
+
+        <TextInput
+          register={register}
+          placeholder="Descrição da vaga"
+          formName="description"
+          errors={errors}
+        />
 
         {/* <input {...register("description")} placeholder="Descrição da vaga" />
         <p>{errors.description?.message}</p> */}
