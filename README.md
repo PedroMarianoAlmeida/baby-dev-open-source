@@ -48,6 +48,7 @@ Rode os testes do projeto localmente: `yarn test`
 
 - [felipesntr](https://github.com/felipesntr)
 - [mauriciomikulski](https://github.com/mauriciomikulski)
+- [devrodrigomolina](https://github.com/devrodrigomolina)
 
 Não apareceram porque reescrevi o repositório e perdi o commits deles =/
 
