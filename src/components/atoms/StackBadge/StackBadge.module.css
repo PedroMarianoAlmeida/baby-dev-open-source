@@ -1,20 +1,18 @@
 #root {
+
   height: 22px;
   font-style: normal;
   font-weight: 500;
   font-size: 8px;
   line-height: 10px;
-
   color: #202020;
-
   border: 1px solid #cccaca;
   border-radius: 50px;
-
   margin: 0;
-
   display: flex;
   align-items: center;
-
+  justify-content: center;
+  white-space: nowrap;
   padding: 5px 8px;
 }
 
