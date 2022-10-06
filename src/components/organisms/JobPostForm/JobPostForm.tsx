@@ -4,8 +4,8 @@ import * as yup from "yup";
 
 import styles from "./JobPostForm.module.css";
 
-import TextInput from "@atoms/formComponents/TextInput";
-import TextArea from "@atoms/formComponents/TextArea";
+import TextInput from "@molecules/formComponents/TextInput";
+import TextArea from "@molecules/formComponents/TextArea";
 
 interface IFormInputs {
   company: string;
