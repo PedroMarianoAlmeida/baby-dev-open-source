@@ -5,6 +5,7 @@ import * as yup from "yup";
 import styles from "./JobPostForm.module.css";
 
 import TextInput from "@atoms/formComponents/TextInput";
+import TextArea from "@atoms/formComponents/TextArea";
 
 interface IFormInputs {
   company: string;
@@ -20,7 +21,7 @@ interface IFormInputs {
 const schema = yup
   .object({
     company: yup.string().required(),
-    //description: yup.number().positive().integer().required(),
+    description: yup.string().required(),
     location: yup.string().required(),
   })
   .required();
@@ -48,6 +49,13 @@ const JobPostForm = (props) => {
   } = register("company");
 
   const {
+    onChange: onChangeDescription,
+    onBlur: onBlurDescription,
+    name: nameDescription,
+    ref: refDescription,
+  } = register("description");
+
+  const {
     onChange: onChangeLocation,
     onBlur: onBlurLocation,
     name: nameLocation,
@@ -57,7 +65,7 @@ const JobPostForm = (props) => {
   //console.log(watch("location"));
   return (
     <div id={styles.root}>
-      <p>JobPostForm</p>
+      <p>Cadastrar Vaga</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           onChange={onChangeCompany}
@@ -68,6 +76,17 @@ const JobPostForm = (props) => {
           placeholder="Empresa"
         />
 
+        <TextArea
+          onChange={onChangeDescription}
+          onBlur={onBlurDescription}
+          name={nameDescription}
+          ref={refDescription}
+          errors={errors}
+          placeholder="Descrição"
+          rows={5}
+          cols={33}
+        />
+
         <TextInput
           onChange={onChangeLocation}
           onBlur={onBlurLocation}
@@ -76,9 +95,6 @@ const JobPostForm = (props) => {
           errors={errors}
           placeholder="Localização"
         />
-
-        {/* <input {...register("description")} placeholder="Descrição da vaga" />
-        <p>{errors.description?.message}</p> */}
 
         <input type="submit" />
       </form>
