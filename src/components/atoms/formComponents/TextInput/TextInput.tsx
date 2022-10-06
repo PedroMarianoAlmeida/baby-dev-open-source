@@ -1,11 +1,18 @@
-const TextInput = ({ register, placeholder, formName, errors }) => {
-  console.log(register, placeholder, formName, errors);
+import React from "react";
+
+const TextInput = React.forwardRef((props, ref) => {
+  const { onChange, onBlur, name } = props;
+
   return (
     <div>
-      <input {...register[formName]} placeholder={placeholder} />
-      <p>{errors[formName]?.message}</p>
+      <input
+        onChange={onChange} // assign onChange event
+        onBlur={onBlur} // assign onBlur event
+        name={name} // assign name prop
+        ref={ref} // assig
+      />
     </div>
   );
-};
+});
 
 export default TextInput;

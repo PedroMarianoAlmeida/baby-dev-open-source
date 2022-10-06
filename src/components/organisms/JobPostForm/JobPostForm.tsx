@@ -20,7 +20,8 @@ interface IFormInputs {
 const schema = yup
   .object({
     company: yup.string().required(),
-    description: yup.number().positive().integer().required(),
+    //description: yup.number().positive().integer().required(),
+    location: yup.string(),
   })
   .required();
 
@@ -29,14 +30,18 @@ const JobPostForm = (props) => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
+
   const onSubmit = (data: IFormInputs) => {
     //add extra data here: closed, createdAt, modifiedAt, curator, who indicates, blob
-    console.log(data);
+    console.log("submit->",data);
   };
 
+  const { onChange, onBlur, name, ref } = register("location");
+  //console.log(watch("location"));
   return (
     <div id={styles.root}>
       <p>JobPostForm</p>
@@ -44,12 +49,7 @@ const JobPostForm = (props) => {
         <input {...register("company")} placeholder="Empresa" />
         <p>{errors.company?.message}</p>
 
-        <TextInput
-          register={register}
-          placeholder="Descrição da vaga"
-          formName="description"
-          errors={errors}
-        />
+        <TextInput onChange={onChange} onBlur={onBlur} name={name} ref={ref} />
 
         {/* <input {...register("description")} placeholder="Descrição da vaga" />
         <p>{errors.description?.message}</p> */}
