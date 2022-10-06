@@ -21,7 +21,7 @@ const schema = yup
   .object({
     company: yup.string().required(),
     //description: yup.number().positive().integer().required(),
-    location: yup.string(),
+    location: yup.string().required(),
   })
   .required();
 
@@ -37,7 +37,7 @@ const JobPostForm = (props) => {
 
   const onSubmit = (data: IFormInputs) => {
     //add extra data here: closed, createdAt, modifiedAt, curator, who indicates, blob
-    console.log("submit->",data);
+    console.log("submit->", data);
   };
 
   const { onChange, onBlur, name, ref } = register("location");
@@ -49,7 +49,14 @@ const JobPostForm = (props) => {
         <input {...register("company")} placeholder="Empresa" />
         <p>{errors.company?.message}</p>
 
-        <TextInput onChange={onChange} onBlur={onBlur} name={name} ref={ref} />
+        <TextInput
+          onChange={onChange}
+          onBlur={onBlur}
+          name={name}
+          ref={ref}
+          errors={errors}
+          placeholder="Localização"
+        />
 
         {/* <input {...register("description")} placeholder="Descrição da vaga" />
         <p>{errors.description?.message}</p> */}
