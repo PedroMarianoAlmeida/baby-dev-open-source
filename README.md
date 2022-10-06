@@ -23,9 +23,11 @@ O projeto está aberto a contribuições, veja as issues abertas!
 ## Tech Stack
 
 - **Next** (e todo seu ecossistema: React, JavaScript, HTML, CSS, etc)
+- **React Hook Form + Yup**: Formulários e validação de dados
 - **Storybook**: Para facilitar as contribuições!
 - **Jest + React Testing Library**: Testes unitários!
 - **Atomic Design**: Não é um framework nem nada, mas é uma boa prática relevante de ser incluída 😉
+
 
 _Sem framework CSS, utilizando os CSS Modules nativos do Next_
 
@@ -73,13 +75,21 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 
 - <https://storybook.js.org/docs/react/builders/webpack>
 
-#### Jest
+### Jest
 
 - <https://blog.logrocket.com/testing-next-js-apps-jest/>: Exemplo passo a passo
 - <https://nextjs.org/docs/testing#setting-up-jest-with-the-rust-compiler>: Que referenciou a documentação 🤡
 - [configurando Jest com o TS Path Mapping](https://jestjs.io/docs/configuration#modulenamemapper-objectstring-string--arraystring) (mas veio do [stackoverflow](https://stackoverflow.com/questions/52860868/typescript-paths-not-resolving-when-running-jest) 😉)
 
-#### Outros
+### React hook form
+
+- [Integrando com yup - sessão Custom Hook with Resolver](https://react-hook-form.com/advanced-usage)
+#### Criando um componente separado integrado ao formulário
+- [Usar o Register completo](https://react-hook-form.com/api/useform/register/)
+- [Como passar as props e o ref](https://reactjs.org/docs/forwarding-refs.html)
+- TypeScript: [props](https://dev.to/giselamd/creating-a-react-input-component-in-typescript-hai) e [ref](https://stackoverflow.com/questions/33796267/how-to-use-refs-in-react-with-typescript)
+
+### Outros
 
 - <https://readme.so/>: Usei pro readme, e como editor online de markdown
 - [Adicionando licença a um repositório](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository)
