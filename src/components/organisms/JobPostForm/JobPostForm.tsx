@@ -40,20 +40,39 @@ const JobPostForm = (props) => {
     console.log("submit->", data);
   };
 
-  const { onChange, onBlur, name, ref } = register("location");
+  const {
+    onChange: onChangeCompany,
+    onBlur: onBlurCompany,
+    name: nameCompany,
+    ref: refCompany,
+  } = register("company");
+
+  const {
+    onChange: onChangeLocation,
+    onBlur: onBlurLocation,
+    name: nameLocation,
+    ref: refLocation,
+  } = register("location");
+
   //console.log(watch("location"));
   return (
     <div id={styles.root}>
       <p>JobPostForm</p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("company")} placeholder="Empresa" />
-        <p>{errors.company?.message}</p>
+        <TextInput
+          onChange={onChangeCompany}
+          onBlur={onBlurCompany}
+          name={nameCompany}
+          ref={refCompany}
+          errors={errors}
+          placeholder="Empresa"
+        />
 
         <TextInput
-          onChange={onChange}
-          onBlur={onBlur}
-          name={name}
-          ref={ref}
+          onChange={onChangeLocation}
+          onBlur={onBlurLocation}
+          name={nameLocation}
+          ref={refLocation}
           errors={errors}
           placeholder="Localização"
         />

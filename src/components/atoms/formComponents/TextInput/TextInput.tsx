@@ -2,7 +2,7 @@ import React from "react";
 
 const TextInput = React.forwardRef((props, ref) => {
   const { onChange, onBlur, name, errors, placeholder = name } = props;
-  console.log(name);
+
   return (
     <div>
       <input
