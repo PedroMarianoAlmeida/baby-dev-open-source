@@ -43,8 +43,38 @@ const JobPostForm = (props) => {
   });
 
   const onSubmit = (data: IFormInputs) => {
-    //add extra data here: closed, createdAt, modifiedAt, curator, who indicates, blob
-    console.log("submit->", data);
+    const {
+      title,
+      company,
+      description,
+      location,
+      requisites,
+      stack,
+      url,
+      source,
+    } = data;
+
+    const curator = "Curator"; //This come from outside the form (auth)
+    const indicatedBy = ""; //This come from outside the form - and it is optional
+    const now = new Date();
+
+    const jobPost = {
+      title,
+      company,
+      description,
+      location,
+      requisites,
+      stack,
+      url,
+      source,
+      closed: false,
+      createAt: now,
+      modifiedAt: now,
+      curator,
+      indicatedBy,
+      blob: `${title} ${company} ${curator} ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
+    };
+    console.log("submit->", jobPost);
   };
 
   const {
@@ -103,8 +133,6 @@ const JobPostForm = (props) => {
     ref: refSource,
   } = register("source");
 
-  //console.log(watch("location"));
-  //console.log(errors);
   return (
     <div id={styles.root}>
       <p>Cadastrar Vaga</p>
