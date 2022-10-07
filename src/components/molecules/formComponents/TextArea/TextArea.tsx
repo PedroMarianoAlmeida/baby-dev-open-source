@@ -1,5 +1,5 @@
 import { forwardRef, RefObject, TextareaHTMLAttributes } from "react";
-
+import ErrorMessageForm from "@atoms/ErrorMessageForm";
 interface TextInputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   errors: {};
 }
@@ -18,7 +18,7 @@ const TextInput = forwardRef(
           placeholder={placeholder}
           {...props}
         />
-        <p>{errors[name]?.message}</p>
+       <ErrorMessageForm text={errors[name]?.message} />
       </div>
     );
   }
