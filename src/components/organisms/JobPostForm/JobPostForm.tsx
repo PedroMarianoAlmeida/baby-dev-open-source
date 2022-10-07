@@ -24,6 +24,8 @@ const schema = yup
     company: yup.string().required(),
     description: yup.string().required(),
     location: yup.string().required(),
+    requisites: yup.array().required(),
+    stack: yup.array().max(5).required(),
   })
   .required();
 
@@ -70,7 +72,14 @@ const JobPostForm = (props) => {
     ref: refRequisites,
   } = register("requisites");
 
+  const {
+    onChange: onChangeStack,
+    onBlur: onBlurStack,
+    name: nameStack,
+    ref: refStack,
+  } = register("stack");
   //console.log(watch("location"));
+  //console.log(errors);
   return (
     <div id={styles.root}>
       <p>Cadastrar Vaga</p>
@@ -115,6 +124,24 @@ const JobPostForm = (props) => {
             { id: "mulher", value: "Mulher" },
             { id: "estagio", value: "Estágio" },
             { id: "negro", value: "Negro" },
+          ]}
+          multiple
+        />
+
+        <Select
+          onChange={onChangeStack}
+          onBlur={onBlurStack}
+          name={nameStack}
+          ref={refStack}
+          errors={errors}
+          options={[
+            { id: "javascript", value: "JavaScript" },
+            { id: "react", value: "React" },
+            { id: "vue", value: "Vue" },
+            { id: "php", value: "PHP" },
+            { id: "elixir", value: "Elixir" },
+            { id: "ruby", value: "Ruby" },
+            { id: "laravel", value: "Laravel" },
           ]}
           multiple
         />

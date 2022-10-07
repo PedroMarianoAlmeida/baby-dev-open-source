@@ -20,9 +20,14 @@ const TextInput = forwardRef(
           {...props}
         >
           <option value="">Selecionar</option>
-          {options.map((option) => (
-            <option value={option.id}>{option.value}</option>
-          ))}
+          {options.map((option) => {
+            const { value, id } = option;
+            return (
+              <option key={id} value={id}>
+                {value}
+              </option>
+            );
+          })}
         </select>
         <ErrorMessageForm text={errors[name]?.message} />
       </div>
