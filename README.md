@@ -28,7 +28,6 @@ O projeto está aberto a contribuições, veja as issues abertas!
 - **Jest + React Testing Library**: Testes unitários!
 - **Atomic Design**: Não é um framework nem nada, mas é uma boa prática relevante de ser incluída 😉
 
-
 _Sem framework CSS, utilizando os CSS Modules nativos do Next_
 
 ## Rode na sua máquina
@@ -84,10 +83,13 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 ### React hook form
 
 - [Integrando com yup - sessão Custom Hook with Resolver](https://react-hook-form.com/advanced-usage)
+
 #### Criando um componente separado integrado ao formulário
+
 - [Usar o Register completo](https://react-hook-form.com/api/useform/register/)
 - [Como passar as props e o ref](https://reactjs.org/docs/forwarding-refs.html)
 - TypeScript: [props](https://dev.to/giselamd/creating-a-react-input-component-in-typescript-hai) e [ref](https://stackoverflow.com/questions/33796267/how-to-use-refs-in-react-with-typescript)
+- [Resolvendo eslint - Error: Component definition is missing display name react/display-name](https://stackoverflow.com/a/43356103/12828114)
 
 ### Outros
 
