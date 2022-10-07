@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Image from "next/image";
 import styles from "./Menu.module.css";
 
+import { UserContext } from "@contexts/UserContext";
+
 const Login = () => {
+  const { user } = useContext(UserContext);
+  console.log(user);
+
   const [isLogin, setIsLogin] = useState(false);
 
   const handleLogin = () => setIsLogin(true);
   const handleLogout = () => setIsLogin(false);
+
+  
 
   return (
     <LoginUI
