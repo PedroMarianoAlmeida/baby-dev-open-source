@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
 const UserProvider = (props) => {
   return <UserContext.Provider value={{user: "testUsers"}}>{props.children}</UserContext.Provider>;
