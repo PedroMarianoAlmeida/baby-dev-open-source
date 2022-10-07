@@ -26,6 +26,7 @@ O projeto está aberto a contribuições, veja as issues abertas!
 - **React Hook Form + Yup**: Formulários e validação de dados
 - **Storybook**: Para facilitar as contribuições!
 - **Jest + React Testing Library**: Testes unitários!
+- **Json server** (temporariamente): Para simular o backend
 - **Atomic Design**: Não é um framework nem nada, mas é uma boa prática relevante de ser incluída 😉
 
 _Sem framework CSS, utilizando os CSS Modules nativos do Next_
@@ -37,6 +38,10 @@ Clone o projeto: `git clone https://github.com/PedroMarianoAlmeida/baby-dev-open
 Abra o diretório do projeto: `cd my-project`
 
 Instale as dependências (com **yarn**): `yarn`
+
+Instale json server globalmente na sua máquina: `npm install -g json-server`
+
+Rode o backend local: `yarn db`
 
 Rode o projeto localmente: `yarn dev`
 
@@ -92,6 +97,11 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 - TypeScript: [props](https://dev.to/giselamd/creating-a-react-input-component-in-typescript-hai) e [ref](https://stackoverflow.com/questions/33796267/how-to-use-refs-in-react-with-typescript)
 - [Resolvendo eslint - Error: Component definition is missing display name react/display-name](https://stackoverflow.com/a/43356103/12828114)
 
+#### Json Server
+
+- [Tutorial em português](https://www.fabricadecodigo.com/json-server/)
+- [Tutorial indicado na documentação oficial](https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server)
+- [Tutorial do The Net Ninja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i2v2ZqJgydXIcRq_ZizIdD)
 ### Outros
 
 - <https://readme.so/>: Usei pro readme, e como editor online de markdown
