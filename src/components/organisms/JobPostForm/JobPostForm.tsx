@@ -21,11 +21,14 @@ interface IFormInputs {
 
 const schema = yup
   .object({
+    title: yup.string().required(),
     company: yup.string().required(),
     description: yup.string().required(),
     location: yup.string().required(),
     requisites: yup.array().required(),
     stack: yup.array().max(5).required(),
+    url: yup.string().required(),
+    source: yup.string().required(),
   })
   .required();
 
@@ -43,6 +46,13 @@ const JobPostForm = (props) => {
     //add extra data here: closed, createdAt, modifiedAt, curator, who indicates, blob
     console.log("submit->", data);
   };
+
+  const {
+    onChange: onChangeTitle,
+    onBlur: onBlurTitle,
+    name: nameTitle,
+    ref: refTitle,
+  } = register("title");
 
   const {
     onChange: onChangeCompany,
@@ -78,12 +88,36 @@ const JobPostForm = (props) => {
     name: nameStack,
     ref: refStack,
   } = register("stack");
+
+  const {
+    onChange: onChangeUrl,
+    onBlur: onBlurUrl,
+    name: nameUrl,
+    ref: refUrl,
+  } = register("url");
+
+  const {
+    onChange: onChangeSource,
+    onBlur: onBlurSource,
+    name: nameSource,
+    ref: refSource,
+  } = register("source");
+
   //console.log(watch("location"));
   //console.log(errors);
   return (
     <div id={styles.root}>
       <p>Cadastrar Vaga</p>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <TextInput
+          onChange={onChangeTitle}
+          onBlur={onBlurTitle}
+          name={nameTitle}
+          ref={refTitle}
+          errors={errors}
+          placeholder="Título"
+        />
+
         <TextInput
           onChange={onChangeCompany}
           onBlur={onBlurCompany}
@@ -144,6 +178,24 @@ const JobPostForm = (props) => {
             { id: "laravel", value: "Laravel" },
           ]}
           multiple
+        />
+
+        <TextInput
+          onChange={onChangeUrl}
+          onBlur={onBlurUrl}
+          name={nameUrl}
+          ref={refUrl}
+          errors={errors}
+          placeholder="Link"
+        />
+
+        <TextInput
+          onChange={onChangeSource}
+          onBlur={onBlurSource}
+          name={nameSource}
+          ref={refSource}
+          errors={errors}
+          placeholder="Fonte"
         />
 
         <input type="submit" />
