@@ -1,13 +1,13 @@
 import { forwardRef, RefObject, SelectHTMLAttributes } from "react";
 import ErrorMessageForm from "@atoms/ErrorMessageForm";
 
-interface TextInputProps extends SelectHTMLAttributes<HTMLSelectElement> {
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: { id: string; value: string }[];
   errors: {};
 }
 
-const TextInput = forwardRef(
-  (props: TextInputProps, ref: RefObject<HTMLSelectElement>) => {
+const Select = forwardRef(
+  (props: SelectProps, ref: RefObject<HTMLSelectElement>) => {
     const { onChange, onBlur, name, errors, options } = props;
 
     return (
@@ -35,4 +35,5 @@ const TextInput = forwardRef(
   }
 );
 
-export default TextInput;
+Select.displayName = "Select";
+export default Select;
