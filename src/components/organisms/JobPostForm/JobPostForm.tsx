@@ -6,6 +6,7 @@ import styles from "./JobPostForm.module.css";
 
 import TextInput from "@molecules/formComponents/TextInput";
 import TextArea from "@molecules/formComponents/TextArea";
+import Select from "@molecules/formComponents/Select";
 
 interface IFormInputs {
   company: string;
@@ -62,6 +63,13 @@ const JobPostForm = (props) => {
     ref: refLocation,
   } = register("location");
 
+  const {
+    onChange: onChangeRequisites,
+    onBlur: onBlurRequisites,
+    name: nameRequisites,
+    ref: refRequisites,
+  } = register("requisites");
+
   //console.log(watch("location"));
   return (
     <div id={styles.root}>
@@ -94,6 +102,21 @@ const JobPostForm = (props) => {
           ref={refLocation}
           errors={errors}
           placeholder="Localização"
+        />
+
+        <Select
+          onChange={onChangeRequisites}
+          onBlur={onBlurRequisites}
+          name={nameRequisites}
+          ref={refRequisites}
+          errors={errors}
+          options={[
+            { id: "pcd", value: "Pessoa com Deficiência" },
+            { id: "mulher", value: "Mulher" },
+            { id: "estagio", value: "Estágio" },
+            { id: "negro", value: "Negro" },
+          ]}
+          multiple
         />
 
         <input type="submit" />
