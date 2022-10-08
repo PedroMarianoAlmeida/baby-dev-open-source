@@ -34,11 +34,18 @@ const schema = yup
   })
   .required();
 
+interface JobPostFormProps {
+  stackAllOptions: { id: string; name: string; stack: string[] }[];
+  curatorData: { id: string; name: string };
+  refreshStackAllOptions(): void;
+}
+
 const JobPostForm = ({
   stackAllOptions,
   curatorData,
   refreshStackAllOptions,
-}) => {
+}: JobPostFormProps) => {
+  console.log(stackAllOptions, curatorData, refreshStackAllOptions);
   const stackAllOptionsTemporary = stackAllOptions
     .map((group) => group.stack)
     .flat()
