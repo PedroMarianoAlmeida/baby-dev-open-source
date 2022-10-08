@@ -10,7 +10,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest --watch",
-    "db": "json-server --watch src/fakeDb.json"
+    "db": "json-server -p 4000 --watch src/fakeDb.json"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",

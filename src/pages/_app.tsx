@@ -1,14 +1,17 @@
 import "src/styles/globals.css";
 import type { AppProps } from "next/app";
 
+import UserProvider from "@contexts/UserContext";
 import Menu from "@organisms/Menu";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div id="myapp-container">
-      <Menu />
-      <Component {...pageProps} />
-    </div>
+    <UserProvider>
+      <div id="myapp-container">
+        <Menu />
+        <Component {...pageProps} />
+      </div>
+    </UserProvider>
   );
 }
 

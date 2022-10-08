@@ -88,7 +88,7 @@
   justify-self: end;
 }
 
-#logout {
+#logoutContainer {
   grid-area: logout;
   cursor: pointer;
   font-weight: 500;
