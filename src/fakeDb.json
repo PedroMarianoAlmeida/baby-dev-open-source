@@ -4,13 +4,15 @@
       "id": 1,
       "name": "curator1",
       "image": "/sample/login-avatar.png",
-      "roles": ["curator"]
+      "roles": ["curator"],
+      "stackSelected": []
     },
     {
       "id": 2,
       "name": "dev1",
       "image": "/sample/login-avatar.png",
-      "roles": []
+      "roles": [],
+      "stackSelected": ["React", "JavaScript"]
     }
   ],
   "techStack": [

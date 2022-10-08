@@ -1,13 +1,20 @@
+import { useContext } from "react";
+
 import UserStackSelector from "@organisms/UserStackSelector";
 import { getAllStackOptions } from "@services/stack";
+import { UserContext } from "@contexts/UserContext";
 
 const JobsPage = ({ stackAllOptions }) => {
-  console.log(stackAllOptions);
+  const { currentUser } = useContext(UserContext);
+  const { stackSelected } = currentUser;
 
   return (
     <div>
       <p>Vagas</p>
-      <UserStackSelector allOptions={stackAllOptions} initialSelected={[]} />
+      <UserStackSelector
+        allOptions={stackAllOptions}
+        initialSelected={stackSelected}
+      />
     </div>
   );
 };
