@@ -5,19 +5,18 @@ import JobPostForm from "@organisms/forms/JobPostForm";
 import { UserContext } from "@contexts/UserContext";
 
 const PostJobPage = ({ stackAllOptions }) => {
+  const [localStackAllOptions, setLocalStackAllOptions] =
+    useState(stackAllOptions);
   const { currentUser } = useContext(UserContext);
   const { roles, id, name } = currentUser;
 
   if (!roles.includes("curator")) return <p>Página exclusiva de Curadores</p>;
 
-  const [localStackAllOptions, setLocalStackAllOptions] =
-    useState(stackAllOptions);
-
   const refreshStackAllOptions = async () => {
     const newStackAllOptions = await getAllStackOptions();
     setLocalStackAllOptions(newStackAllOptions);
   };
-  
+
   return (
     <>
       <JobPostForm
