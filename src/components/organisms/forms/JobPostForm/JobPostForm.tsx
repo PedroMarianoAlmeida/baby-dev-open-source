@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -32,7 +34,23 @@ const schema = yup
   })
   .required();
 
-const JobPostForm = (props) => {
+interface JobPostFormProps {
+  stackAllOptions: { id: string; name: string; stack: string[] }[];
+  curatorData: { id: string; name: string };
+  refreshStackAllOptions(): void;
+}
+
+const JobPostForm = ({
+  stackAllOptions,
+  curatorData,
+  refreshStackAllOptions,
+}: JobPostFormProps) => {
+  console.log(stackAllOptions, curatorData, refreshStackAllOptions);
+  const stackAllOptionsTemporary = stackAllOptions
+    .map((group) => group.stack)
+    .flat()
+    .map((stack) => ({ id: stack, value: stack }));
+
   const {
     register,
     handleSubmit,
@@ -54,7 +72,6 @@ const JobPostForm = (props) => {
       source,
     } = data;
 
-    const curator = "Curator"; //This come from outside the form (auth)
     const indicatedBy = ""; //This come from outside the form - and it is optional
     const now = new Date();
 
@@ -67,12 +84,14 @@ const JobPostForm = (props) => {
       stack,
       url,
       source,
-      closed: false,
+      status: "open",
       createAt: now,
       modifiedAt: now,
-      curator,
+      curator: curatorData.id,
       indicatedBy,
-      blob: `${title} ${company} ${curator} ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
+      blob: `${title} ${company} ${
+        curatorData.name
+      } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
     };
     console.log("submit->", jobPost);
   };
@@ -190,21 +209,21 @@ const JobPostForm = (props) => {
           multiple
         />
 
+        <Link href="/novaStack" passHref>
+          <a target="_blank" rel="noopener noreferrer">
+            Não encontrou? Cadastre uma nova
+          </a>
+        </Link>
+        <button onClick={refreshStackAllOptions} type="button">
+          Após cadastrar, atualize o Select
+        </button>
         <Select
           onChange={onChangeStack}
           onBlur={onBlurStack}
           name={nameStack}
           ref={refStack}
           errors={errors}
-          options={[
-            { id: "javascript", value: "JavaScript" },
-            { id: "react", value: "React" },
-            { id: "vue", value: "Vue" },
-            { id: "php", value: "PHP" },
-            { id: "elixir", value: "Elixir" },
-            { id: "ruby", value: "Ruby" },
-            { id: "laravel", value: "Laravel" },
-          ]}
+          options={stackAllOptionsTemporary}
           multiple
         />
 

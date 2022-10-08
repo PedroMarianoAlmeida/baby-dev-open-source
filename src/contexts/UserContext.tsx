@@ -6,6 +6,7 @@ interface IUser {
   name: string;
   image: string;
   roles: string[];
+  stackSelected: string[];
 }
 
 const emptyUser: IUser = {
@@ -13,6 +14,7 @@ const emptyUser: IUser = {
   name: "",
   image: "",
   roles: [],
+  stackSelected: [],
 };
 
 export const UserContext = createContext({

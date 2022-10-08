@@ -59,6 +59,10 @@ Não apareceram porque reescrevi o repositório e perdi o commits deles =/
 
 # Links Úteis
 
+### Next
+
+- [Como abrir nova aba interna (usando Link do Next)](https://stackoverflow.com/a/71029662/12828114)
+
 ### Path Mapping
 
 Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
@@ -102,6 +106,7 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 - [Tutorial em português](https://www.fabricadecodigo.com/json-server/)
 - [Tutorial indicado na documentação oficial](https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server)
 - [Tutorial do The Net Ninja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i2v2ZqJgydXIcRq_ZizIdD)
+
 ### Outros
 
 - <https://readme.so/>: Usei pro readme, e como editor online de markdown
