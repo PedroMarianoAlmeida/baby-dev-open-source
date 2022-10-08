@@ -25,11 +25,13 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
   const [formError, setFormError] = useState("");
   const [backendMessage, setBackendMessage] = useState("");
 
-  const stackGroupsNames = stackAllOptions.map((group) => group.name);
-  const stackGroupsToSelect = stackGroupsNames.map((stack) => ({
-    id: stack,
-    value: stack,
+  const stackGroupsToSelect = stackAllOptions.map((group) => ({
+    value: group.name,
+    id: group.id,
   }));
+  const stackGroupsNames = stackGroupsToSelect.map((group) => group.value);
+
+  console.log(stackGroupsNames);
 
   const {
     register,
@@ -41,7 +43,7 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
   });
 
   const onSubmit = async (data: IFormInputs) => {
-    const { existentGroup, newGroup } = data;
+    const { existentGroup, newGroup, name } = data;
     if (existentGroup !== "" && newGroup !== "") {
       setFormError("Marcar apenas um dos campos de Grupo");
       return;
@@ -50,13 +52,14 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
       setFormError("Grupo ja existente, buscar no Select");
       return;
     }
-
-    setBackendMessage("Cadastrando...");
-    const message = await createStack(data);
-    setBackendMessage(message);
-    if (message === "Cadastrado com sucesso") {
-      setFormError("");
-      //reset form fields
+    if (newGroup) {
+      setBackendMessage("Cadastrando...");
+      const message = await createStack(newGroup, name);
+      setBackendMessage(message);
+      if (message === "Cadastrado com sucesso") {
+        setFormError("");
+        //reset form fields
+      }
     }
   };
 
