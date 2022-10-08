@@ -32,7 +32,12 @@ const schema = yup
   })
   .required();
 
-const JobPostForm = (props) => {
+const JobPostForm = ({ stackAllOptions }) => {
+  const stackAllOptionsTemporary = stackAllOptions
+    .map((group) => group.stack)
+    .flat()
+    .map((stack) => ({ id: stack, value: stack }));
+
   const {
     register,
     handleSubmit,
@@ -67,7 +72,7 @@ const JobPostForm = (props) => {
       stack,
       url,
       source,
-      closed: false,
+      status: "open",
       createAt: now,
       modifiedAt: now,
       curator,
@@ -181,12 +186,7 @@ const JobPostForm = (props) => {
           name={nameRequisites}
           ref={refRequisites}
           errors={errors}
-          options={[
-            { id: "pcd", value: "Pessoa com Deficiência" },
-            { id: "mulher", value: "Mulher" },
-            { id: "estagio", value: "Estágio" },
-            { id: "negro", value: "Negro" },
-          ]}
+          options={stackAllOptionsTemporary}
           multiple
         />
 
