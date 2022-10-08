@@ -19,7 +19,7 @@ const schema = yup
   })
   .required();
 
-const PostTechStack = ({ stackAllOptions }) => {
+const PostTechStack = ({ stackAllOptions, createStack }) => {
   const stackGroups = stackAllOptions
     .map((group) => group.name)
     .map((stack) => ({ id: stack, value: stack }));
@@ -33,8 +33,8 @@ const PostTechStack = ({ stackAllOptions }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: IFormInputs) => {
-    console.log(data);
+  const onSubmit = async (data: IFormInputs) => {
+    createStack(data);
   };
 
   const {
