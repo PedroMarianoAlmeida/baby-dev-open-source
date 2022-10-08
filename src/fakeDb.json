@@ -12,5 +12,41 @@
       "image": "/sample/login-avatar.png",
       "roles": []
     }
+  ],
+  "techStack": [
+    {
+      "name": "Linguagens de Programação",
+      "stack": ["JavaScript", "PHP", "Ruby", "Java", "C#"]
+    },
+    {
+      "name": "Frontend",
+      "stack": [
+        "HTML",
+        "CSS",
+        "React",
+        "Angular",
+        "Vue",
+        "Svelte",
+        "Next",
+        "Nuxt",
+        "Oxygen"
+      ]
+    },
+    {
+      "name": "Backend",
+      "stack": ["Node", "Laravel", "Elixir", "Springboot", "Ruby on Rails"]
+    },
+    {
+      "name": "Mobile",
+      "stack": ["React Native", "Flutter", "Android", "iOS", "Ionic"]
+    },
+    {
+      "name": "Low Code",
+      "stack": ["Wordpress", "Vtex", "Service Now"]
+    },
+    {
+      "name": "Devops",
+      "stack": ["AWS", "Docker", "Terraform"]
+    }
   ]
 }
