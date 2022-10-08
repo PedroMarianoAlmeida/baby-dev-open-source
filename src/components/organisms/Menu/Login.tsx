@@ -5,25 +5,18 @@ import styles from "./Menu.module.css";
 import { UserContext } from "@contexts/UserContext";
 
 const Login = () => {
-  const { user } = useContext(UserContext);
-  console.log(user);
-
-  const [isLogin, setIsLogin] = useState(false);
-
-  const handleLogin = () => setIsLogin(true);
-  const handleLogout = () => setIsLogin(false);
-
-  
+  const { currentUser, login, logout } = useContext(UserContext);
+  const { name, image } = currentUser;
 
   return (
     <LoginUI
-      isLogged={isLogin}
+      isLogged={name !== ""}
       userData={{
-        name: "Sarah",
-        image: "/sample/login-avatar.png",
+        name,
+        image,
       }}
-      handleLogin={handleLogin}
-      handleLogout={handleLogout}
+      login={login}
+      logout={logout}
     />
   );
 };
@@ -31,25 +24,26 @@ const Login = () => {
 interface LoginUiProps {
   isLogged: boolean;
   userData: { name: string; image: string };
-  handleLogin(): void;
-  handleLogout(): void;
+  login(id: string): void;
+  logout(): void;
 }
 
-const LoginUI = ({
-  isLogged,
-  userData,
-  handleLogin,
-  handleLogout,
-}: LoginUiProps) => {
+const LoginUI = ({ isLogged, userData, login, logout }: LoginUiProps) => {
   const { name, image } = userData;
-  const { menuItem, notLogged, loggedContainer, welcome, logout, avatar } =
-    styles;
+  const {
+    menuItem,
+    notLogged,
+    loggedContainer,
+    welcome,
+    logoutContainer,
+    avatar,
+  } = styles;
   return (
     <li className={menuItem}>
       {isLogged ? (
         <div id={loggedContainer}>
           <div id={welcome}>Oi, {name}</div>
-          <p id={logout} onClick={handleLogout}>
+          <p id={logoutContainer} onClick={logout}>
             Log out
           </p>
           <div id={avatar}>
@@ -57,9 +51,14 @@ const LoginUI = ({
           </div>
         </div>
       ) : (
-        <div id={notLogged} onClick={handleLogin}>
-          Login
-        </div>
+        <>
+          <div id={notLogged} onClick={() => login("2")}>
+            Login (Dev)
+          </div>
+          <div id={notLogged} onClick={() => login("1")}>
+            Login (Cur.)
+          </div>
+        </>
       )}
     </li>
   );

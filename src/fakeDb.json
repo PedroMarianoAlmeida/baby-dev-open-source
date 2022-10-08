@@ -3,11 +3,13 @@
     {
       "id": 1,
       "name": "curator1",
+      "image": "/sample/login-avatar.png",
       "roles": ["curator"]
     },
     {
       "id": 2,
       "name": "dev1",
+      "image": "/sample/login-avatar.png",
       "roles": []
     }
   ]
