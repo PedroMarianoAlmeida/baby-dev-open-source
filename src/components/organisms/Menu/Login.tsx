@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Image from "next/image";
 import styles from "./Menu.module.css";
 

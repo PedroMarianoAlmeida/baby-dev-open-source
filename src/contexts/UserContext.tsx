@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import { userLogin } from "@services/user";
 
 interface IUser {
   id: string;
@@ -23,20 +24,8 @@ export const UserContext = createContext({
 const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(emptyUser);
 
-  const loginService = async (id: string) => {
-    try {
-      const res = await fetch(`http://localhost:4000/users/${id}`);
-      if (res.ok) {
-        const data = await res.json();
-        return data;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const login = async (id: string) => {
-    const userData = await loginService(id);
+    const userData = await userLogin(id);
     if (userData.name !== "") setCurrentUser(userData);
   };
 
