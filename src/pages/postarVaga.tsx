@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
 import { getAllStackOptions } from "@services/stack";
-import JobPostForm from "@organisms/JobPostForm";
+import JobPostForm from "@organisms/forms/JobPostForm";
 import { UserContext } from "@contexts/UserContext";
-import PostTechStack from "@organisms/PostTechStack";
+import PostTechStack from "@organisms/forms/PostTechStack";
 
 const PostJobPage = ({ stackAllOptions }) => {
   const { currentUser } = useContext(UserContext);
