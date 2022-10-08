@@ -21,7 +21,7 @@ const schema = yup
   })
   .required();
 
-const PostTechStack = ({ stackAllOptions, createStack }) => {
+const PostTechStack = ({ stackAllOptions, createStack, updateStack }) => {
   const [formError, setFormError] = useState("");
   const [backendMessage, setBackendMessage] = useState("");
 
@@ -30,8 +30,6 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
     id: group.id,
   }));
   const stackGroupsNames = stackGroupsToSelect.map((group) => group.value);
-
-  console.log(stackGroupsNames);
 
   const {
     register,
@@ -52,14 +50,27 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
       setFormError("Grupo ja existente, buscar no Select");
       return;
     }
+    let message = "";
+    setBackendMessage("Cadastrando...");
     if (newGroup) {
-      setBackendMessage("Cadastrando...");
-      const message = await createStack(newGroup, name);
-      setBackendMessage(message);
-      if (message === "Cadastrado com sucesso") {
-        setFormError("");
-        //reset form fields
+      message = await createStack(newGroup, name);
+    } else {
+      const groupToChange = stackAllOptions.find(
+        (group) => Number(existentGroup) === group.id
+      );
+      if (groupToChange.stack.includes(name)) {
+        setFormError("Tecnologia já cadastrada anteriormente");
+        setBackendMessage("");
+        return;
       }
+      const newStackArray = [...groupToChange.stack, name];
+      message = await updateStack(existentGroup, newStackArray);
+    }
+
+    setBackendMessage(message);
+    if (message === "Cadastrado com sucesso") {
+      setFormError("");
+      //reset form fields
     }
   };
 
@@ -86,7 +97,7 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
 
   return (
     <>
-      <p>Cadastrar TechStack</p>
+      <p>Cadastrar Tecnologia</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Selecionar grupo existente</label>
         <Select
