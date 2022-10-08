@@ -13,7 +13,7 @@ const PostJobPage = ({ stackAllOptions }) => {
 
   return (
     <>
-      <PostTechStack />
+      <PostTechStack stackAllOptions={stackAllOptions}/>
       <JobPostForm
         stackAllOptions={stackAllOptions}
         curatorData={{ id, name }}
