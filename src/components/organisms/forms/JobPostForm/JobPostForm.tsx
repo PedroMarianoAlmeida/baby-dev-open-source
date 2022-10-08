@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -196,6 +198,11 @@ const JobPostForm = ({ stackAllOptions, curatorData }) => {
           multiple
         />
 
+        <Link href="/novaStack" passHref>
+          <a target="_blank" rel="noopener noreferrer">
+            Não encontrou? Cadastre uma nova
+          </a>
+        </Link>
         <Select
           onChange={onChangeStack}
           onBlur={onBlurStack}
