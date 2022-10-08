@@ -6,13 +6,16 @@ import { UserContext } from "@contexts/UserContext";
 
 const PostJobPage = ({ stackAllOptions }) => {
   const { currentUser } = useContext(UserContext);
-  const { roles } = currentUser;
+  const { roles, id, name } = currentUser;
 
   if (!roles.includes("curator")) return <p>Página exclusiva de Curadores</p>;
 
   return (
     <>
-      <JobPostForm stackAllOptions={stackAllOptions} />
+      <JobPostForm
+        stackAllOptions={stackAllOptions}
+        curatorData={{ id, name }}
+      />
     </>
   );
 };

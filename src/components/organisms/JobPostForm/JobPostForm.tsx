@@ -32,7 +32,7 @@ const schema = yup
   })
   .required();
 
-const JobPostForm = ({ stackAllOptions }) => {
+const JobPostForm = ({ stackAllOptions, curatorData }) => {
   const stackAllOptionsTemporary = stackAllOptions
     .map((group) => group.stack)
     .flat()
@@ -59,7 +59,6 @@ const JobPostForm = ({ stackAllOptions }) => {
       source,
     } = data;
 
-    const curator = "Curator"; //This come from outside the form (auth)
     const indicatedBy = ""; //This come from outside the form - and it is optional
     const now = new Date();
 
@@ -75,9 +74,11 @@ const JobPostForm = ({ stackAllOptions }) => {
       status: "open",
       createAt: now,
       modifiedAt: now,
-      curator,
+      curator: curatorData.id,
       indicatedBy,
-      blob: `${title} ${company} ${curator} ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
+      blob: `${title} ${company} ${
+        curatorData.name
+      } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
     };
     console.log("submit->", jobPost);
   };
@@ -186,7 +187,12 @@ const JobPostForm = ({ stackAllOptions }) => {
           name={nameRequisites}
           ref={refRequisites}
           errors={errors}
-          options={stackAllOptionsTemporary}
+          options={[
+            { id: "pcd", value: "Pessoa com Deficiência" },
+            { id: "mulher", value: "Mulher" },
+            { id: "estagio", value: "Estágio" },
+            { id: "negro", value: "Negro" },
+          ]}
           multiple
         />
 
@@ -196,15 +202,7 @@ const JobPostForm = ({ stackAllOptions }) => {
           name={nameStack}
           ref={refStack}
           errors={errors}
-          options={[
-            { id: "javascript", value: "JavaScript" },
-            { id: "react", value: "React" },
-            { id: "vue", value: "Vue" },
-            { id: "php", value: "PHP" },
-            { id: "elixir", value: "Elixir" },
-            { id: "ruby", value: "Ruby" },
-            { id: "laravel", value: "Laravel" },
-          ]}
+          options={stackAllOptionsTemporary}
           multiple
         />
 
