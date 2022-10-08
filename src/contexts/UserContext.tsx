@@ -1,13 +1,24 @@
 import { useState, createContext } from "react";
 
-export const UserContext = createContext();
+interface IUser {
+  id: string;
+  name: string;
+  image: string;
+  roles: string[];
+}
 
-const emptyUser = {
+const emptyUser: IUser = {
   id: "",
   name: "",
   image: "",
   roles: [],
 };
+
+export const UserContext = createContext({
+  currentUser: emptyUser,
+  login: (id: string) => {},
+  logout: () => {},
+});
 
 const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(emptyUser);
