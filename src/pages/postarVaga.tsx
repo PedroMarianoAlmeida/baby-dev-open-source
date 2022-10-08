@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { getAllStackOptions } from "@services/stack";
 import JobPostForm from "@organisms/JobPostForm";
 import { UserContext } from "@contexts/UserContext";
+import PostTechStack from "@organisms/PostTechStack";
 
 const PostJobPage = ({ stackAllOptions }) => {
   const { currentUser } = useContext(UserContext);
@@ -12,6 +13,7 @@ const PostJobPage = ({ stackAllOptions }) => {
 
   return (
     <>
+      <PostTechStack />
       <JobPostForm
         stackAllOptions={stackAllOptions}
         curatorData={{ id, name }}
