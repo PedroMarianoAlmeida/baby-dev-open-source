@@ -22,7 +22,6 @@ export const createStack = async (groupName: string, stackName: string) => {
     });
 
     if (res.ok) {
-      const data = await res.json();
       return "Cadastrado com sucesso";
     }
     return "Erro";
@@ -43,7 +42,6 @@ export const updateStack = async (groupId: string, stacksUpdated: string[]) => {
     });
 
     if (res.ok) {
-      const data = await res.json();
       return "Cadastrado com sucesso";
     }
     return "Erro";

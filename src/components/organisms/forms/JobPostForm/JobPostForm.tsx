@@ -34,7 +34,11 @@ const schema = yup
   })
   .required();
 
-const JobPostForm = ({ stackAllOptions, curatorData }) => {
+const JobPostForm = ({
+  stackAllOptions,
+  curatorData,
+  refreshStackAllOptions,
+}) => {
   const stackAllOptionsTemporary = stackAllOptions
     .map((group) => group.stack)
     .flat()
@@ -203,6 +207,9 @@ const JobPostForm = ({ stackAllOptions, curatorData }) => {
             Não encontrou? Cadastre uma nova
           </a>
         </Link>
+        <button onClick={refreshStackAllOptions} type="button">
+          Após cadastrar, atualize o Select
+        </button>
         <Select
           onChange={onChangeStack}
           onBlur={onBlurStack}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { getAllStackOptions } from "@services/stack";
 import JobPostForm from "@organisms/forms/JobPostForm";
@@ -10,11 +10,20 @@ const PostJobPage = ({ stackAllOptions }) => {
 
   if (!roles.includes("curator")) return <p>Página exclusiva de Curadores</p>;
 
+  const [localStackAllOptions, setLocalStackAllOptions] =
+    useState(stackAllOptions);
+
+  const refreshStackAllOptions = async () => {
+    const newStackAllOptions = await getAllStackOptions();
+    setLocalStackAllOptions(newStackAllOptions);
+  };
+  
   return (
     <>
       <JobPostForm
-        stackAllOptions={stackAllOptions}
+        stackAllOptions={localStackAllOptions}
         curatorData={{ id, name }}
+        refreshStackAllOptions={refreshStackAllOptions}
       />
     </>
   );
