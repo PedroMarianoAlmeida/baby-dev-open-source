@@ -1,11 +1,18 @@
+import { useContext } from "react";
+
 import { getAllStackOptions } from "@services/stack";
 import JobPostForm from "@organisms/JobPostForm";
+import { UserContext } from "@contexts/UserContext";
 
 const PostJobPage = ({ stackAllOptions }) => {
-  console.log(stackAllOptions);
+  const { currentUser } = useContext(UserContext);
+  const { roles } = currentUser;
+
+  if (!roles.includes("curator")) return <p>Página exclusiva de Curadores</p>;
+
   return (
     <>
-      <JobPostForm stackAllOptions={stackAllOptions}/>
+      <JobPostForm stackAllOptions={stackAllOptions} />
     </>
   );
 };
