@@ -17,10 +17,12 @@
   ],
   "techStack": [
     {
+      "id": 1,
       "name": "Linguagens de Programação",
       "stack": ["JavaScript", "PHP", "Ruby", "Java", "C#"]
     },
     {
+      "id": 2,
       "name": "Frontend",
       "stack": [
         "HTML",
@@ -35,18 +37,22 @@
       ]
     },
     {
+      "id": 3,
       "name": "Backend",
       "stack": ["Node", "Laravel", "Elixir", "Springboot", "Ruby on Rails"]
     },
     {
+      "id": 4,
       "name": "Mobile",
       "stack": ["React Native", "Flutter", "Android", "iOS", "Ionic"]
     },
     {
+      "id": 5,
       "name": "Low Code",
       "stack": ["Wordpress", "Vtex", "Service Now"]
     },
     {
+      "id": 6,
       "name": "Devops",
       "stack": ["AWS", "Docker", "Terraform"]
     }

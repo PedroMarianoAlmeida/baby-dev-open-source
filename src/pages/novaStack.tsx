@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import {createStack} from "@services/stack"
+import { createStack } from "@services/stack";
 
 import { getAllStackOptions } from "@services/stack";
 import { UserContext } from "@contexts/UserContext";
@@ -14,7 +14,10 @@ const PostJobPage = ({ stackAllOptions }) => {
 
   return (
     <>
-      <PostTechStack stackAllOptions={stackAllOptions} createStack={createStack} />
+      <PostTechStack
+        stackAllOptions={stackAllOptions}
+        createStack={createStack}
+      />
     </>
   );
 };

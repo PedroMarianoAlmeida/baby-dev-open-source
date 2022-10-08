@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -20,9 +22,14 @@ const schema = yup
   .required();
 
 const PostTechStack = ({ stackAllOptions, createStack }) => {
-  const stackGroups = stackAllOptions
-    .map((group) => group.name)
-    .map((stack) => ({ id: stack, value: stack }));
+  const [formError, setFormError] = useState("");
+  const [backendMessage, setBackendMessage] = useState("");
+
+  const stackGroupsNames = stackAllOptions.map((group) => group.name);
+  const stackGroupsToSelect = stackGroupsNames.map((stack) => ({
+    id: stack,
+    value: stack,
+  }));
 
   const {
     register,
@@ -34,7 +41,23 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
   });
 
   const onSubmit = async (data: IFormInputs) => {
-    createStack(data);
+    const { existentGroup, newGroup } = data;
+    if (existentGroup !== "" && newGroup !== "") {
+      setFormError("Marcar apenas um dos campos de Grupo");
+      return;
+    }
+    if (stackGroupsNames.includes(newGroup)) {
+      setFormError("Grupo ja existente, buscar no Select");
+      return;
+    }
+
+    setBackendMessage("Cadastrando...");
+    const message = await createStack(data);
+    setBackendMessage(message);
+    if (message === "Cadastrado com sucesso") {
+      setFormError("");
+      //reset form fields
+    }
   };
 
   const {
@@ -69,7 +92,7 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
           name={nameExistentGroup}
           ref={refExistentGroup}
           errors={errors}
-          options={stackGroups}
+          options={stackGroupsToSelect}
         />
 
         <label>Caso não seja de nenhum, escrever nome do novo grupo</label>
@@ -93,6 +116,9 @@ const PostTechStack = ({ stackAllOptions, createStack }) => {
         />
 
         <input type="submit" />
+
+        <p>{formError}</p>
+        <p>{backendMessage}</p>
       </form>
     </>
   );
