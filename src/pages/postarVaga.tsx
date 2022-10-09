@@ -32,11 +32,10 @@ const PostJobPage = ({ stackAllOptions, requisitesOptions }) => {
     <>
       <JobPostForm
         stackAllOptions={localStackAllOptions}
+        requisitesOptions={localRequisiteOptions}
         curatorData={{ id, name }}
         refreshStackAllOptions={refreshStackAllOptions}
         refreshRequisitesOptions={refreshRequisitesOptions}
-        requisitesOptions={requisitesOptions}
-        
       />
     </>
   );
