@@ -36,6 +36,7 @@ const schema = yup
 
 interface JobPostFormProps {
   stackAllOptions: { id: string; name: string; stack: string[] }[];
+  requisitesOptions: { id: string; value: string }[];
   curatorData: { id: string; name: string };
   refreshStackAllOptions(): void;
 }
@@ -44,8 +45,8 @@ const JobPostForm = ({
   stackAllOptions,
   curatorData,
   refreshStackAllOptions,
+  requisitesOptions,
 }: JobPostFormProps) => {
-  console.log(stackAllOptions, curatorData, refreshStackAllOptions);
   const stackAllOptionsTemporary = stackAllOptions
     .map((group) => group.stack)
     .flat()
@@ -93,7 +94,6 @@ const JobPostForm = ({
         curatorData.name
       } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
     };
-    console.log("submit->", jobPost);
   };
 
   const {
@@ -200,12 +200,7 @@ const JobPostForm = ({
           name={nameRequisites}
           ref={refRequisites}
           errors={errors}
-          options={[
-            { id: "pcd", value: "Pessoa com Deficiência" },
-            { id: "mulher", value: "Mulher" },
-            { id: "estagio", value: "Estágio" },
-            { id: "negro", value: "Negro" },
-          ]}
+          options={requisitesOptions}
           multiple
         />
 

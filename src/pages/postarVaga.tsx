@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 
 import { getAllStackOptions } from "@services/stack";
+import { getRequisitesOptions } from "@services/requisites";
+
 import JobPostForm from "@organisms/forms/JobPostForm";
 import { UserContext } from "@contexts/UserContext";
 
-const PostJobPage = ({ stackAllOptions }) => {
+const PostJobPage = ({ stackAllOptions, requisitesOptions }) => {
   const [localStackAllOptions, setLocalStackAllOptions] =
     useState(stackAllOptions);
   const { currentUser } = useContext(UserContext);
@@ -23,6 +25,7 @@ const PostJobPage = ({ stackAllOptions }) => {
         stackAllOptions={localStackAllOptions}
         curatorData={{ id, name }}
         refreshStackAllOptions={refreshStackAllOptions}
+        requisitesOptions={requisitesOptions}
       />
     </>
   );
@@ -30,9 +33,12 @@ const PostJobPage = ({ stackAllOptions }) => {
 
 export async function getServerSideProps(context) {
   const stackAllOptions = await getAllStackOptions();
+  const requisitesOptions = await getRequisitesOptions();
+
   return {
     props: {
       stackAllOptions,
+      requisitesOptions,
     },
   };
 }
