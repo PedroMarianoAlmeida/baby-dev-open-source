@@ -36,16 +36,19 @@ const schema = yup
 
 interface JobPostFormProps {
   stackAllOptions: { id: string; name: string; stack: string[] }[];
+  requisitesOptions: { id: string; value: string }[];
   curatorData: { id: string; name: string };
   refreshStackAllOptions(): void;
+  refreshRequisitesOptions(): void;
 }
 
 const JobPostForm = ({
   stackAllOptions,
   curatorData,
   refreshStackAllOptions,
+  requisitesOptions,
+  refreshRequisitesOptions,
 }: JobPostFormProps) => {
-  console.log(stackAllOptions, curatorData, refreshStackAllOptions);
   const stackAllOptionsTemporary = stackAllOptions
     .map((group) => group.stack)
     .flat()
@@ -93,7 +96,7 @@ const JobPostForm = ({
         curatorData.name
       } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
     };
-    console.log("submit->", jobPost);
+    console.log(jobPost);
   };
 
   const {
@@ -194,24 +197,27 @@ const JobPostForm = ({
           placeholder="Localização"
         />
 
+        <Link href="/novoRequisito" passHref>
+          <a target="_blank" rel="noopener noreferrer">
+            Não encontrou o Requisito? Cadastre um novo
+          </a>
+        </Link>
+        <button onClick={refreshRequisitesOptions} type="button">
+          Após cadastrar, atualize o Select
+        </button>
         <Select
           onChange={onChangeRequisites}
           onBlur={onBlurRequisites}
           name={nameRequisites}
           ref={refRequisites}
           errors={errors}
-          options={[
-            { id: "pcd", value: "Pessoa com Deficiência" },
-            { id: "mulher", value: "Mulher" },
-            { id: "estagio", value: "Estágio" },
-            { id: "negro", value: "Negro" },
-          ]}
+          options={requisitesOptions}
           multiple
         />
 
         <Link href="/novaStack" passHref>
           <a target="_blank" rel="noopener noreferrer">
-            Não encontrou? Cadastre uma nova
+            Não encontrou a Tecnologia? Cadastre uma nova
           </a>
         </Link>
         <button onClick={refreshStackAllOptions} type="button">

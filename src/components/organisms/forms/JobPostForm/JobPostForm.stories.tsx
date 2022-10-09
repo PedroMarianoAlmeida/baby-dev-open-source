@@ -17,12 +17,16 @@ const curatorData = {
   name: "Curator Name",
 };
 const refreshStackAllOptions = () => {};
+const requisitesOptions = [{ id: "1", value: "Requisite 1" }];
+const refreshRequisitesOptions = () => {};
 
 const Template: ComponentStory<typeof JobPostForm> = (args) => (
   <JobPostForm
     stackAllOptions={[stackAllOptions]}
     curatorData={curatorData}
     refreshStackAllOptions={refreshStackAllOptions}
+    requisitesOptions={requisitesOptions}
+    refreshRequisitesOptions={refreshRequisitesOptions}
   />
 );
 
