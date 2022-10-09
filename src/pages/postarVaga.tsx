@@ -9,6 +9,10 @@ import { UserContext } from "@contexts/UserContext";
 const PostJobPage = ({ stackAllOptions, requisitesOptions }) => {
   const [localStackAllOptions, setLocalStackAllOptions] =
     useState(stackAllOptions);
+
+  const [localRequisiteOptions, setLocalRequisiteOptions] =
+    useState(requisitesOptions);
+
   const { currentUser } = useContext(UserContext);
   const { roles, id, name } = currentUser;
 
@@ -19,13 +23,20 @@ const PostJobPage = ({ stackAllOptions, requisitesOptions }) => {
     setLocalStackAllOptions(newStackAllOptions);
   };
 
+  const refreshRequisitesOptions = async () => {
+    const newStackAllOptions = await getRequisitesOptions();
+    setLocalRequisiteOptions(newStackAllOptions);
+  };
+
   return (
     <>
       <JobPostForm
         stackAllOptions={localStackAllOptions}
         curatorData={{ id, name }}
         refreshStackAllOptions={refreshStackAllOptions}
+        refreshRequisitesOptions={refreshRequisitesOptions}
         requisitesOptions={requisitesOptions}
+        
       />
     </>
   );

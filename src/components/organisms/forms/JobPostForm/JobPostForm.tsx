@@ -39,6 +39,7 @@ interface JobPostFormProps {
   requisitesOptions: { id: string; value: string }[];
   curatorData: { id: string; name: string };
   refreshStackAllOptions(): void;
+  refreshRequisitesOptions(): void;
 }
 
 const JobPostForm = ({
@@ -46,6 +47,7 @@ const JobPostForm = ({
   curatorData,
   refreshStackAllOptions,
   requisitesOptions,
+  refreshRequisitesOptions,
 }: JobPostFormProps) => {
   const stackAllOptionsTemporary = stackAllOptions
     .map((group) => group.stack)
@@ -94,6 +96,7 @@ const JobPostForm = ({
         curatorData.name
       } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
     };
+    console.log(jobPost);
   };
 
   const {
@@ -194,6 +197,14 @@ const JobPostForm = ({
           placeholder="Localização"
         />
 
+        <Link href="/novoRequisito" passHref>
+          <a target="_blank" rel="noopener noreferrer">
+            Não encontrou o Requisito? Cadastre um novo
+          </a>
+        </Link>
+        <button onClick={refreshRequisitesOptions} type="button">
+          Após cadastrar, atualize o Select
+        </button>
         <Select
           onChange={onChangeRequisites}
           onBlur={onBlurRequisites}
@@ -206,7 +217,7 @@ const JobPostForm = ({
 
         <Link href="/novaStack" passHref>
           <a target="_blank" rel="noopener noreferrer">
-            Não encontrou? Cadastre uma nova
+            Não encontrou a Tecnologia? Cadastre uma nova
           </a>
         </Link>
         <button onClick={refreshStackAllOptions} type="button">
