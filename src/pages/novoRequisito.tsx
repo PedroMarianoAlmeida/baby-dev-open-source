@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -6,7 +6,7 @@ import * as yup from "yup";
 
 import TextInput from "@molecules/formComponents/TextInput";
 
-import { createStack, updateStack } from "@services/stack";
+import { createRequisite } from "@services/requisites";
 import { UserContext } from "@contexts/UserContext";
 import { getRequisitesOptions } from "@services/requisites";
 
@@ -24,6 +24,9 @@ const PostJobPage = ({ requisitesOptions }) => {
   const { currentUser } = useContext(UserContext);
   const { roles } = currentUser;
 
+  const [formError, setFormError] = useState("");
+  const [backendMessage, setBackendMessage] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -36,7 +39,22 @@ const PostJobPage = ({ requisitesOptions }) => {
   if (!roles.includes("curator")) return <p>Página exclusiva de Curadores</p>;
 
   const onSubmit = async (data: IFormInputs) => {
-    console.log(data);
+    const { newRequisite } = data;
+
+    const requisitesNames = requisitesOptions.map(
+      (requisite) => requisite.value
+    );
+    if (requisitesNames.includes(newRequisite)) {
+      setFormError("Requisito já cadastrado anteriormente");
+      return;
+    }
+
+    const message = await createRequisite(newRequisite);
+    setBackendMessage(message);
+    if (message === "Cadastrado com sucesso") {
+      setFormError("");
+      //reset form fields
+    }
   };
 
   const {
@@ -59,6 +77,8 @@ const PostJobPage = ({ requisitesOptions }) => {
         />
 
         <input type="submit" />
+        <p>{formError}</p>
+        <p>{backendMessage}</p>
       </form>
     </>
   );

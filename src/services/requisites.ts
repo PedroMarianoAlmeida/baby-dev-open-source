@@ -10,43 +10,22 @@ export const getRequisitesOptions = async () => {
   }
 };
 
-// export const createStack = async (groupName: string, stackName: string) => {
-//   try {
-//     const res = await fetch(`http://localhost:4000/techStack`, {
-//       method: "POST",
-//       body: JSON.stringify({
-//         name: groupName,
-//         stack: [stackName],
-//       }),
-//       headers: { "Content-type": "application/json;charset=UTF-8" },
-//     });
+export const createRequisite = async (requisiteName: string) => {
+  try {
+    const res = await fetch(`http://localhost:4000/requisites`, {
+      method: "POST",
+      body: JSON.stringify({
+        value: requisiteName,
+      }),
+      headers: { "Content-type": "application/json;charset=UTF-8" },
+    });
 
-//     if (res.ok) {
-//       return "Cadastrado com sucesso";
-//     }
-//     return "Erro";
-//   } catch (error) {
-//     console.log(error);
-//     return "Erro";
-//   }
-// };
-
-// export const updateStack = async (groupId: string, stacksUpdated: string[]) => {
-//   try {
-//     const res = await fetch(`http://localhost:4000/techStack/${groupId}`, {
-//       method: "PUT",
-//       body: JSON.stringify({
-//         stack: stacksUpdated,
-//       }),
-//       headers: { "Content-type": "application/json;charset=UTF-8" },
-//     });
-
-//     if (res.ok) {
-//       return "Cadastrado com sucesso";
-//     }
-//     return "Erro";
-//   } catch (error) {
-//     console.log(error);
-//     return "Erro";
-//   }
-// };
+    if (res.ok) {
+      return "Cadastrado com sucesso";
+    }
+    return "Erro";
+  } catch (error) {
+    console.log(error);
+    return "Erro";
+  }
+};
