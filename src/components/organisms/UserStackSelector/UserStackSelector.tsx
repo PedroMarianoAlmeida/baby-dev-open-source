@@ -1,21 +1,48 @@
 import { useState, useEffect } from "react";
+import { Controller } from "react-hook-form";
 
 import styles from "./UserStackSelector.module.css";
 
 import TopContainer from "./TopContainer";
 import BottomContainer from "./BottomContainer";
 
+const UserStackSelectorController = ({
+  control,
+  initialSelected,
+  allOptions,
+}) => (
+  <Controller
+    control={control}
+    name="stack"
+    render={({ field: { onChange, onBlur, value, ref } }) => (
+      <UserStackSelector
+        onChange={onChange} // send value to hook form
+        //onBlur={onBlur} // notify when input is touched/blur
+        //selected={value}
+        allOptions={allOptions}
+        initialSelected={initialSelected}
+      />
+    )}
+  />
+);
+
 interface UserStackSelectorProps {
   initialSelected: string[];
   allOptions: { name: string; stack: string[] }[];
+  onChange: any;
 }
 
-const UserStackSelector = ({
+export const UserStackSelector = ({
   initialSelected,
   allOptions,
+  onChange,
 }: UserStackSelectorProps) => {
   const [selected, setSelected] = useState(initialSelected);
   const [showOptions, setShowOptions] = useState(false);
+
+  useEffect(() => {
+    onChange(selected);
+  }, [selected]);
 
   useEffect(() => {
     setSelected(initialSelected);
@@ -53,4 +80,4 @@ const UserStackSelector = ({
   );
 };
 
-export default UserStackSelector;
+export default UserStackSelectorController;

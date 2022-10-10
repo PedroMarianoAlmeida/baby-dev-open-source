@@ -12,13 +12,13 @@ import { getRequisitesOptions } from "@services/requisites";
 import { UserContext } from "@contexts/UserContext";
 
 interface IFormInputs {
-  //stack: string[];
+  stack: string[];
   requisites: string[];
 }
 
 const schema = yup
   .object({
-    //stack: yup.string(),
+    stack: yup.string(),
     requisites: yup.array(),
   })
   .required();
@@ -32,6 +32,7 @@ const JobsPage = ({ stackAllOptions, requisitesOptions }) => {
     handleSubmit,
     formState: { errors },
     watch,
+    control,
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
@@ -61,13 +62,14 @@ const JobsPage = ({ stackAllOptions, requisitesOptions }) => {
           multiple
         />
 
+        <UserStackSelector
+          allOptions={stackAllOptions}
+          initialSelected={stackSelected}
+          control={control} //stack form name is inside this component
+        />
+
         <input type="submit" />
       </form>
-
-      <UserStackSelector
-        allOptions={stackAllOptions}
-        initialSelected={stackSelected}
-      />
     </div>
   );
 };
