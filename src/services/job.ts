@@ -1,14 +1,16 @@
-// export const getRequisitesOptions = async () => {
-//   try {
-//     const res = await fetch(`http://localhost:4000/requisites`);
-//     if (res.ok) {
-//       const data = await res.json();
-//       return data;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const getRecentJobs = async () => {
+  try {
+    const res = await fetch(
+      `http://localhost:4000/jobs?_sort=modifiedAts&_order=desc&_start=0&_limit=10&status=open`
+    );
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const createJob = async (data) => {
   try {
