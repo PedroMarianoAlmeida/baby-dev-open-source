@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "next/link";
 
 import { useForm } from "react-hook-form";
@@ -50,6 +51,8 @@ const JobPostForm = ({
   requisitesOptions,
   refreshRequisitesOptions,
 }: JobPostFormProps) => {
+  const [formError, setFormError] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -71,6 +74,11 @@ const JobPostForm = ({
       url,
       source,
     } = data;
+
+    if (stack.length > 5) {
+      setFormError("No máximo  5 tecnologias");
+      return;
+    }
 
     const indicatedBy = ""; //This come from outside the form - and it is optional
     const now = new Date();
@@ -239,6 +247,7 @@ const JobPostForm = ({
         />
 
         <input type="submit" />
+        <p>{formError}</p>
       </form>
     </div>
   );
