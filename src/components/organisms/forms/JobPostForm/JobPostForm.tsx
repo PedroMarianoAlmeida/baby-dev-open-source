@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "next/link";
 
 import { useForm } from "react-hook-form";
@@ -9,6 +10,7 @@ import styles from "./JobPostForm.module.css";
 import TextInput from "@molecules/formComponents/TextInput";
 import TextArea from "@molecules/formComponents/TextArea";
 import Select from "@molecules/formComponents/Select";
+import UserStackSelector from "@organisms/UserStackSelector";
 
 interface IFormInputs {
   company: string;
@@ -28,7 +30,7 @@ const schema = yup
     description: yup.string().required(),
     location: yup.string().required(),
     requisites: yup.array().required(),
-    stack: yup.array().max(5).required(),
+    stack: yup.array().required(),
     url: yup.string().required(),
     source: yup.string().required(),
   })
@@ -49,16 +51,14 @@ const JobPostForm = ({
   requisitesOptions,
   refreshRequisitesOptions,
 }: JobPostFormProps) => {
-  const stackAllOptionsTemporary = stackAllOptions
-    .map((group) => group.stack)
-    .flat()
-    .map((stack) => ({ id: stack, value: stack }));
+  const [formError, setFormError] = useState("");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    control,
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
@@ -74,6 +74,11 @@ const JobPostForm = ({
       url,
       source,
     } = data;
+
+    if (stack.length > 5) {
+      setFormError("No máximo  5 tecnologias");
+      return;
+    }
 
     const indicatedBy = ""; //This come from outside the form - and it is optional
     const now = new Date();
@@ -133,13 +138,6 @@ const JobPostForm = ({
     name: nameRequisites,
     ref: refRequisites,
   } = register("requisites");
-
-  const {
-    onChange: onChangeStack,
-    onBlur: onBlurStack,
-    name: nameStack,
-    ref: refStack,
-  } = register("stack");
 
   const {
     onChange: onChangeUrl,
@@ -223,14 +221,11 @@ const JobPostForm = ({
         <button onClick={refreshStackAllOptions} type="button">
           Após cadastrar, atualize o Select
         </button>
-        <Select
-          onChange={onChangeStack}
-          onBlur={onBlurStack}
-          name={nameStack}
-          ref={refStack}
-          errors={errors}
-          options={stackAllOptionsTemporary}
-          multiple
+
+        <UserStackSelector
+          allOptions={stackAllOptions}
+          initialSelected={[]}
+          control={control} //stack form name is inside this component
         />
 
         <TextInput
@@ -252,6 +247,7 @@ const JobPostForm = ({
         />
 
         <input type="submit" />
+        <p>{formError}</p>
       </form>
     </div>
   );
