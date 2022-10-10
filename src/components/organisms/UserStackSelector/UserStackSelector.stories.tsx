@@ -1,11 +1,12 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import UserStackSelector from ".";
+
+import { UserStackSelectorStructure } from "./UserStackSelector";
 
 export default {
   title: "Organisms/UserStackSelector",
-  component: UserStackSelector,
-} as ComponentMeta<typeof UserStackSelector>;
+  component: UserStackSelectorStructure,
+} as ComponentMeta<typeof UserStackSelectorStructure>;
 
 const initialSelected = ["HTML", "React Native", "JavaScript"];
 
@@ -46,10 +47,11 @@ const allOptions = [
   },
 ];
 
-const Template: ComponentStory<typeof UserStackSelector> = (args) => (
-  <UserStackSelector
+const Template: ComponentStory<typeof UserStackSelectorStructure> = (args) => (
+  <UserStackSelectorStructure
     initialSelected={initialSelected}
     allOptions={allOptions}
+    onChange={() => {}}
   />
 );
 

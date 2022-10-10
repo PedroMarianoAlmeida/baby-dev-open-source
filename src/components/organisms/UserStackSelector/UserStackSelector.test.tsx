@@ -1,13 +1,14 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import UserStackSelector from "./";
+import { UserStackSelectorStructure } from "./UserStackSelector";
 import "@testing-library/jest-dom";
 
 describe("organism > UserStackSelector", () => {
   it("it show TopContainer", () => {
     render(
-      <UserStackSelector
+      <UserStackSelectorStructure
         initialSelected={[]}
         allOptions={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+        onChange={() => {}}
       />
     );
 
@@ -16,9 +17,10 @@ describe("organism > UserStackSelector", () => {
 
   it("it show BottomContainer after click in TopContainer", () => {
     render(
-      <UserStackSelector
+      <UserStackSelectorStructure
         initialSelected={[]}
         allOptions={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+        onChange={() => {}}
       />
     );
 
@@ -35,9 +37,10 @@ describe("organism > UserStackSelector", () => {
 
   it("it add stack on click in it on BottomContainer", () => {
     render(
-      <UserStackSelector
+      <UserStackSelectorStructure
         initialSelected={[]}
         allOptions={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+        onChange={() => {}}
       />
     );
 
@@ -49,9 +52,10 @@ describe("organism > UserStackSelector", () => {
 
   it("ir remove stack on click in it on TopContainer", () => {
     render(
-      <UserStackSelector
+      <UserStackSelectorStructure
         initialSelected={["stack1"]}
         allOptions={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+        onChange={() => {}}
       />
     );
 

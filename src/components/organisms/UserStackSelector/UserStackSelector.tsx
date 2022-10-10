@@ -6,16 +6,12 @@ import styles from "./UserStackSelector.module.css";
 import TopContainer from "./TopContainer";
 import BottomContainer from "./BottomContainer";
 
-const UserStackSelectorController = ({
-  control,
-  initialSelected,
-  allOptions,
-}) => (
+const UserStackSelector = ({ control, initialSelected, allOptions }) => (
   <Controller
     control={control}
     name="stack"
     render={({ field: { onChange, onBlur, value, ref } }) => (
-      <UserStackSelector
+      <UserStackSelectorStructure
         onChange={onChange} // send value to hook form
         //onBlur={onBlur} // notify when input is touched/blur
         //selected={value}
@@ -29,10 +25,10 @@ const UserStackSelectorController = ({
 interface UserStackSelectorProps {
   initialSelected: string[];
   allOptions: { name: string; stack: string[] }[];
-  onChange: any;
+  onChange(selected: string[]): void;
 }
 
-export const UserStackSelector = ({
+export const UserStackSelectorStructure = ({
   initialSelected,
   allOptions,
   onChange,
@@ -80,4 +76,4 @@ export const UserStackSelector = ({
   );
 };
 
-export default UserStackSelectorController;
+export default UserStackSelector;
