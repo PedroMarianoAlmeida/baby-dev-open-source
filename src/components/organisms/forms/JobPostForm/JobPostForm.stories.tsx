@@ -27,6 +27,7 @@ const Template: ComponentStory<typeof JobPostForm> = (args) => (
     refreshStackAllOptions={refreshStackAllOptions}
     requisitesOptions={requisitesOptions}
     refreshRequisitesOptions={refreshRequisitesOptions}
+    createJob={async () => ""}
   />
 );
 
