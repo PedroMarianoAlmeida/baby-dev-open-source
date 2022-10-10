@@ -23,6 +23,15 @@ interface IFormInputs {
   source: string;
 }
 
+interface IPostJobData extends IFormInputs {
+  status: string;
+  createAt: Date;
+  modifiedAt: Date;
+  curator: string;
+  indicatedBy: string;
+  blob: string;
+}
+
 const schema = yup
   .object({
     title: yup.string().required(),
@@ -42,6 +51,7 @@ interface JobPostFormProps {
   curatorData: { id: string; name: string };
   refreshStackAllOptions(): void;
   refreshRequisitesOptions(): void;
+  createJob(data: IPostJobData): Promise<string>;
 }
 
 const JobPostForm = ({
@@ -50,8 +60,10 @@ const JobPostForm = ({
   refreshStackAllOptions,
   requisitesOptions,
   refreshRequisitesOptions,
+  createJob,
 }: JobPostFormProps) => {
   const [formError, setFormError] = useState("");
+  const [backendMessage, setBackendMessage] = useState("");
 
   const {
     register,
@@ -63,7 +75,7 @@ const JobPostForm = ({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: IFormInputs) => {
+  const onSubmit = async (data: IFormInputs) => {
     const {
       title,
       company,
@@ -101,7 +113,14 @@ const JobPostForm = ({
         curatorData.name
       } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
     };
-    console.log(jobPost);
+
+    setBackendMessage("Cadastrando...");
+    const message = await createJob(jobPost);
+    setBackendMessage(message);
+    if (message === "Cadastrado com sucesso") {
+      setFormError("");
+      //reset form fields
+    }
   };
 
   const {
@@ -248,6 +267,7 @@ const JobPostForm = ({
 
         <input type="submit" />
         <p>{formError}</p>
+        <p>{backendMessage}</p>
       </form>
     </div>
   );

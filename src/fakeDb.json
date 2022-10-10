@@ -74,5 +74,41 @@
       "id": 4,
       "value": "Estágio"
     }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Programador FullStack",
+      "company": "BabyDev SA",
+      "description": "Estamos em busca de um Dev top",
+      "location": "Remoto",
+      "requisites": [],
+      "stack": ["JavaScript", "React", "Node"],
+      "url": "www.google.com",
+      "source": "LinkedIn",
+      "status": "open",
+      "createAt": "2022-10-10T02:03:58.590Z",
+      "modifiedAt": "2022-10-10T02:03:58.590Z",
+      "curator": 1,
+      "indicatedBy": "",
+      "blob": ""
+    },
+    {
+      "title": "React Developer",
+      "company": "PH Tech",
+      "description": "Vaguinha show de bola",
+      "location": "Rio de Janeiro, RJ",
+      "requisites": ["2"],
+      "stack": ["JavaScript", "React", "Next", "HTML", "CSS"],
+      "url": "linkedin.com",
+      "source": "café com dev",
+      "status": "open",
+      "createAt": "2022-10-10T02:03:58.590Z",
+      "modifiedAt": "2022-10-10T02:03:58.590Z",
+      "curator": 1,
+      "indicatedBy": "",
+      "blob": "React Developer PH Tech curator1 2022 9 0",
+      "id": 2
+    }
   ]
 }

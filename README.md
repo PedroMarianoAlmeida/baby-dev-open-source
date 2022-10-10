@@ -93,6 +93,7 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 ### React hook form
 
 - [Integrando com yup - sessão Custom Hook with Resolver](https://react-hook-form.com/advanced-usage)
+- [Integrando componente customizado](https://react-hook-form.com/api/usecontroller/controller)
 
 #### Criando um componente separado integrado ao formulário
 
@@ -106,6 +107,10 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 - [Tutorial em português](https://www.fabricadecodigo.com/json-server/)
 - [Tutorial indicado na documentação oficial](https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server)
 - [Tutorial do The Net Ninja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9i2v2ZqJgydXIcRq_ZizIdD)
+
+### Queries
+
+- [sort](https://www.npmjs.com/package/json-server#sort), [limit](https://www.npmjs.com/package/json-server#slice) e [filter](https://www.npmjs.com/package/json-server#filter): Usadas em Buscas Recentes
 
 ### Outros
 

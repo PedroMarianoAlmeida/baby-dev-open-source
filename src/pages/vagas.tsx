@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import { getRecentJobs } from "@services/job";
+
 import Select from "@molecules/formComponents/Select";
 import UserStackSelector from "@organisms/UserStackSelector";
 
@@ -23,9 +25,11 @@ const schema = yup
   })
   .required();
 
-const JobsPage = ({ stackAllOptions, requisitesOptions }) => {
+const JobsPage = ({ stackAllOptions, requisitesOptions, recentJobs }) => {
   const { currentUser } = useContext(UserContext);
   const { stackSelected } = currentUser;
+
+  console.log("Recent Jobs->", recentJobs);
 
   const {
     register,
@@ -78,11 +82,13 @@ export async function getServerSideProps(context) {
   //Put in a promise all
   const stackAllOptions = await getAllStackOptions();
   const requisitesOptions = await getRequisitesOptions();
+  const recentJobs = await getRecentJobs();
 
   return {
     props: {
       stackAllOptions,
       requisitesOptions,
+      recentJobs,
     },
   };
 }

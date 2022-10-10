@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 
 import { getAllStackOptions } from "@services/stack";
 import { getRequisitesOptions } from "@services/requisites";
+import { createJob } from "@services/job";
 
 import JobPostForm from "@organisms/forms/JobPostForm";
 import { UserContext } from "@contexts/UserContext";
@@ -36,6 +37,7 @@ const PostJobPage = ({ stackAllOptions, requisitesOptions }) => {
         curatorData={{ id, name }}
         refreshStackAllOptions={refreshStackAllOptions}
         refreshRequisitesOptions={refreshRequisitesOptions}
+        createJob={createJob}
       />
     </>
   );

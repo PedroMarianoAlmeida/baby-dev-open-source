@@ -48,7 +48,8 @@ const PostJobPage = ({ requisitesOptions }) => {
       setFormError("Requisito já cadastrado anteriormente");
       return;
     }
-
+    
+    setBackendMessage("Cadastrando...");
     const message = await createRequisite(newRequisite);
     setBackendMessage(message);
     if (message === "Cadastrado com sucesso") {
