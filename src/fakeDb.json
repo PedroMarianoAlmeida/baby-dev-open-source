@@ -74,5 +74,24 @@
       "id": 4,
       "value": "Estágio"
     }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Programador FullStack",
+      "company": "BabyDev SA",
+      "description": "Estamos em busca de um Dev top",
+      "location": "Remoto",
+      "requisites": [],
+      "stack": ["JavaScript", "React", "Node"],
+      "url": "www.google.com",
+      "source": "LinkedIn",
+      "status": "open",
+      "createAt": "",
+      "modifiedAt": "",
+      "curator": 1,
+      "indicatedBy": "",
+      "blob": ""
+    }
   ]
 }
