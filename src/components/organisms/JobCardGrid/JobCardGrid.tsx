@@ -6,15 +6,11 @@ const JobCardGrid = ({ jobs }) => {
   const jobsCardData = jobs.map((job) => {
     const { company, title, location, stack } = job;
     return {
-      company: {
-        logo: "",
-        name: company,
-      },
-      job: {
-        title,
-        place: location,
-      },
-      stack: stack,
+      companyName: company,
+      companyLogo: "",
+      jobTitle: title,
+      jobLocation: location,
+      jobStack: stack,
     };
   });
 
