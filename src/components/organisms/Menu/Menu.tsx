@@ -6,6 +6,7 @@ import useDebounce from "src/hooks/useDebounce";
 import Login from "./Login";
 import MenuItem from "./MenuItem";
 import Logo from "./Logo";
+import CuratorMenuOptions from "./CuratorMenuOptions";
 
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -46,6 +47,7 @@ const Menu = () => {
               <MenuItem href="/vagas" text="Vagas 🔍" />
               <MenuItem href="/parcceiros" text="Parceiros 🤝" />
               <MenuItem href="/contatos" text="Contato 📞" />
+              <CuratorMenuOptions />
               <hr id={hr} />
               <Login />
             </ul>
