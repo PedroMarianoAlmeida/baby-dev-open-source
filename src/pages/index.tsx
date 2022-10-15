@@ -1,5 +1,3 @@
-import StackBadge from "@atoms/StackBadge";
-import JobCard from "src/components/molecules/JobCard";
 import styles from "src/styles/Home.module.css";
 
 const cardData = {
@@ -16,8 +14,7 @@ const cardData = {
 export default function Home() {
   return (
     <div className={styles.container}>
-      <StackBadge name="teste" />
-      <JobCard cardData={cardData} />
+      <h1 className="title">Página inicial</h1>
     </div>
   );
 }
