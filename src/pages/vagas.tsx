@@ -74,7 +74,7 @@ const JobsPage = ({ stackAllOptions, requisitesOptions, recentJobs }) => {
         <input type="submit" />
       </form>
 
-      <h2>Vagas recentes</h2>
+      <h2 className="title">Vagas recentes</h2>
       <JobCardGrid jobs={recentJobs} />
     </div>
   );
