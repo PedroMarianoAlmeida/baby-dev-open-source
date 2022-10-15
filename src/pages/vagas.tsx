@@ -30,8 +30,6 @@ const JobsPage = ({ stackAllOptions, requisitesOptions, recentJobs }) => {
   const { currentUser } = useContext(UserContext);
   const { stackSelected } = currentUser;
 
-  console.log("Recent Jobs->", recentJobs);
-
   const {
     register,
     handleSubmit,
@@ -77,7 +75,7 @@ const JobsPage = ({ stackAllOptions, requisitesOptions, recentJobs }) => {
       </form>
 
       <h2>Vagas recentes</h2>
-      <JobCardGrid />
+      <JobCardGrid jobs={recentJobs} />
     </div>
   );
 };
