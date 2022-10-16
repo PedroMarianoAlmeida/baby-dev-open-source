@@ -79,7 +79,7 @@
     {
       "id": 1,
       "title": "Programador FullStack",
-      "company": "BabyDev SA",
+      "company": 1,
       "description": "Estamos em busca de um Dev top",
       "location": "Remoto",
       "requisites": [],
@@ -95,7 +95,7 @@
     },
     {
       "title": "React Developer",
-      "company": "PH Tech",
+      "company": 2,
       "description": "Vaguinha show de bola",
       "location": "Rio de Janeiro, RJ",
       "requisites": ["2"],
@@ -109,6 +109,22 @@
       "indicatedBy": "",
       "blob": "React Developer PH Tech curator1 2022 9 0",
       "id": 2
+    }
+  ],
+  "companies": [
+    {
+      "id": 1,
+      "name": "BabyDev SA",
+      "logo": "/sample/babyDevSA_logo.jpeg",
+      "webSite": "https://www.pedroprogrammer.com/",
+      "linkedin": "https://www.linkedin.com/in/pedroprogrammer/"
+    },
+    {
+      "id": 2,
+      "name": "PH Tech",
+      "logo": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7a3ec529632909.55fc107b84b8c.png",
+      "webSite": "https://www.google.com/",
+      "linkedin": "https://www.linkedin.com/company/google/"
     }
   ]
 }
