@@ -118,3 +118,4 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 - [Adicionando licença a um repositório](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository)
 - [Explicação do Atômic Design](https://www.youtube.com/watch?v=XGPRyL7TXsk&t=159s)
 - [Playlist Spotify que me ajuda na concentração =D](https://open.spotify.com/playlist/5O0m5JxHVsyBWTYW5yuR12)
+- [Criando incluindo no projeto uma Favicon](https://dev.to/jcubic/favicon-for-next-js-and-typescript-9gk)
