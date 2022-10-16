@@ -5,6 +5,9 @@ export const getRecentJobs = async () => {
     );
     if (res.ok) {
       const data = await res.json();
+      const companiesId = data.map((job) => job.company);
+      const companiesData = await getCompaniesData(companiesId);
+      console.log(companiesData);
       return data;
     }
   } catch (error) {
@@ -27,5 +30,25 @@ export const createJob = async (data) => {
   } catch (error) {
     console.log(error);
     return "Erro";
+  }
+};
+
+const getCompaniesData = async (companiesId: string[]) => {
+  const companiesQuery = companiesId.map(
+    (companyId: string) => `id=${companyId}&`
+  );
+  const companiesQueryUrl = `?${companiesQuery.slice(0, -1)}`; //Slice remove the  last "&'
+
+  try {
+    const res = await fetch(
+      `http://localhost:4000/companies${companiesQueryUrl}`
+    );
+
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
