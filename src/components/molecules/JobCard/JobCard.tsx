@@ -5,46 +5,43 @@ import Box from "@atoms/Box";
 
 interface JobCardProps {
   cardData: {
-    company: {
-      logo: string;
-      name: string;
-    };
-    job: {
-      title: string;
-      place: string;
-    };
-
-    stack: string[];
+    companyName: string;
+    companyLogo: string;
+    jobTitle: string;
+    jobLocation: string;
+    jobStack: string[];
   };
 }
 
 const JobCard = ({ cardData }: JobCardProps) => {
-  const { company, job, stack } = cardData;
-  const { logo, name } = company;
-  const { title, place } = job;
+  const { companyName, companyLogo, jobTitle, jobLocation, jobStack } =
+    cardData;
+
+  const { root, content, logoTitle, logo, title, name, job, place, stack } =
+    styles;
 
   return (
-    <div id={styles.root}>
+    <div className={root}>
       <Box>
-        <div id={styles.content}>
-          <div id={styles.logoTitle}>
+        <div className={content}>
+          <div className={logoTitle}>
             <Image
-              src={logo}
-              alt={name}
-              id={styles.logo}
+              src={companyLogo}
+              alt={`${companyName} - ${jobTitle}`}
+              className={logo}
               width={50}
               height={50}
             />
-            <div id={styles.title}>
-              <h4 id={styles.name}>{name}</h4>
-              <h3 id={styles.job}>{title}</h3>
+            <div className={title}>
+              <h4 className={name}>{companyName}</h4>
+              <h3 className={job}>{jobTitle}</h3>
             </div>
           </div>
-          <h5 id={styles.place}>{place}</h5>
+          <h5 className={place}>{jobLocation}</h5>
         </div>
         <hr />
-        <div id={styles.stack}>
-          {stack.map((tec) => (
+        <div className={stack}>
+          {jobStack.map((tec) => (
             <StackBadge name={tec} key={tec} />
           ))}
         </div>

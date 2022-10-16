@@ -12,6 +12,7 @@ import UserStackSelector from "@organisms/UserStackSelector";
 import { getAllStackOptions } from "@services/stack";
 import { getRequisitesOptions } from "@services/requisites";
 import { UserContext } from "@contexts/UserContext";
+import JobCardGrid from "@organisms/JobCardGrid";
 
 interface IFormInputs {
   stack: string[];
@@ -28,8 +29,6 @@ const schema = yup
 const JobsPage = ({ stackAllOptions, requisitesOptions, recentJobs }) => {
   const { currentUser } = useContext(UserContext);
   const { stackSelected } = currentUser;
-
-  console.log("Recent Jobs->", recentJobs);
 
   const {
     register,
@@ -74,6 +73,9 @@ const JobsPage = ({ stackAllOptions, requisitesOptions, recentJobs }) => {
 
         <input type="submit" />
       </form>
+
+      <h2 className="title">Vagas recentes</h2>
+      <JobCardGrid jobs={recentJobs} />
     </div>
   );
 };

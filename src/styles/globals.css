@@ -17,3 +17,7 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.title{
+  color: #D7225E;
+}
