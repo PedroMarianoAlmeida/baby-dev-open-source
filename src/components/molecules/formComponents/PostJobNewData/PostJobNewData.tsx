@@ -3,8 +3,8 @@ import Link from "next/link";
 interface PostJobNewDataProps {
   href: string;
   notFoundText: string;
-  updateText: string;
-  updateField(): void;
+  updateText?: string;
+  updateField?(): void;
 }
 
 const PostJobNewData = ({
@@ -13,6 +13,20 @@ const PostJobNewData = ({
   updateField,
   updateText,
 }: PostJobNewDataProps) => {
+  if (updateField && updateText)
+    return (
+      <>
+        <Link href={href} passHref>
+          <a target="_blank" rel="noopener noreferrer">
+            {notFoundText}
+          </a>
+        </Link>
+        <button onClick={updateField} type="button">
+          {updateText}
+        </button>
+      </>
+    );
+
   return (
     <>
       <Link href={href} passHref>
@@ -20,9 +34,6 @@ const PostJobNewData = ({
           {notFoundText}
         </a>
       </Link>
-      <button onClick={updateField} type="button">
-        {updateText}
-      </button>
     </>
   );
 };

@@ -185,7 +185,10 @@ const JobPostForm = ({
           errors={errors}
           placeholder="Título"
         />
-
+        <PostJobNewData
+          href="/novaEmpresa"
+          notFoundText="Não encontrou a empresa? Cadastre-a aqui"
+        />
         <TextInput
           onChange={onChangeCompany}
           onBlur={onBlurCompany}
