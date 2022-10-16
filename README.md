@@ -62,6 +62,7 @@ Não apareceram porque reescrevi o repositório e perdi o commits deles =/
 ### Next
 
 - [Como abrir nova aba interna (usando Link do Next)](https://stackoverflow.com/a/71029662/12828114)
+- [Como liberar de carregar qualquer imagem](https://stackoverflow.com/a/73951135/12828114)
 
 ### Path Mapping
 
