@@ -5,9 +5,9 @@ export const getRecentJobs = async () => {
     );
     if (res.ok) {
       const data = await res.json();
-      const companiesId = data.map((job) => job.company);
-      const companiesData = await getCompaniesData(companiesId);
-      console.log(companiesData);
+      const jobsWithCompanyData = await addCompanyDataInJob(data);
+
+      console.log(jobsWithCompanyData);
       return data;
     }
   } catch (error) {
@@ -33,12 +33,22 @@ export const createJob = async (data) => {
   }
 };
 
+const addCompanyDataInJob = async (jobs) => {
+  const companiesId = jobs.map((job) => job.company);
+  const companiesData = await getCompaniesData(companiesId);
+  const jobsWithCompanyData = jobs.map((job) => ({
+    ...job,
+    companyData: companiesData.find((company) => company.id === job.company),
+  }));
+  return jobsWithCompanyData;
+};
+
 const getCompaniesData = async (companiesId: string[]) => {
   const companiesQuery = companiesId.map(
     (companyId: string) => `id=${companyId}&`
   );
-  const companiesQueryUrl = `?${companiesQuery.slice(0, -1)}`; //Slice remove the  last "&'
-
+  const companiesQueryUrl = `?${companiesQuery.join("").slice(0, -1)}`; //Slice remove the  last "&'
+  console.log(companiesQueryUrl);
   try {
     const res = await fetch(
       `http://localhost:4000/companies${companiesQueryUrl}`
