@@ -11,6 +11,7 @@ import TextInput from "@molecules/formComponents/TextInput";
 import TextArea from "@molecules/formComponents/TextArea";
 import Select from "@molecules/formComponents/Select";
 import UserStackSelector from "@organisms/UserStackSelector";
+import PostJobNewData from "@molecules/formComponents/PostJobNewData";
 
 interface IFormInputs {
   company: string;
@@ -213,15 +214,12 @@ const JobPostForm = ({
           errors={errors}
           placeholder="Localização"
         />
-
-        <Link href="/novoRequisito" passHref>
-          <a target="_blank" rel="noopener noreferrer">
-            Não encontrou o Requisito? Cadastre um novo
-          </a>
-        </Link>
-        <button onClick={refreshRequisitesOptions} type="button">
-          Após cadastrar, atualize o Select
-        </button>
+        <PostJobNewData
+          href="/novoRequisito"
+          notFoundText="Não encontrou o Requisito? Cadastre um novo"
+          updateField={refreshRequisitesOptions}
+          updateText="Após cadastrar, atualize o Select"
+        />
         <Select
           onChange={onChangeRequisites}
           onBlur={onBlurRequisites}
@@ -232,14 +230,12 @@ const JobPostForm = ({
           multiple
         />
 
-        <Link href="/novaStack" passHref>
-          <a target="_blank" rel="noopener noreferrer">
-            Não encontrou a Tecnologia? Cadastre uma nova
-          </a>
-        </Link>
-        <button onClick={refreshStackAllOptions} type="button">
-          Após cadastrar, atualize o Select
-        </button>
+        <PostJobNewData
+          href="/novaStack"
+          notFoundText="Não encontrou a Tecnologia? Cadastre uma nova"
+          updateField={refreshStackAllOptions}
+          updateText="Após cadastrar, atualize o Select"
+        />
 
         <UserStackSelector
           allOptions={stackAllOptions}
