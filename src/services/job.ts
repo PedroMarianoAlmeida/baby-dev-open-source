@@ -7,8 +7,16 @@ export const getRecentJobs = async () => {
       const data = await res.json();
       const jobsWithCompanyData = await addCompanyDataInJob(data);
 
-      console.log(jobsWithCompanyData);
-      return data;
+      const dataSanitized = jobsWithCompanyData.map((job) => ({
+        companyName: job.companyData.name,
+        companyLogo: job.companyData.logo,
+        jobTitle: job.title,
+        jobLocation: job.location,
+        jobStack: job.stack,
+        createAt: job.createAt,
+      }));
+
+      return dataSanitized;
     }
   } catch (error) {
     console.log(error);
