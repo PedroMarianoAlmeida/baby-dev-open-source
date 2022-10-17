@@ -4,7 +4,7 @@ import { createCompany, isCompanyAlreadyRegistered } from "@services/company";
 import { UserContext } from "@contexts/UserContext";
 import PostCompany from "@organisms/forms/PostCompany";
 
-const novaEmpresa = () => {
+const NovaEmpresa = () => {
   const { currentUser } = useContext(UserContext);
   const { roles } = currentUser;
 
@@ -20,4 +20,4 @@ const novaEmpresa = () => {
   );
 };
 
-export default novaEmpresa;
+export default NovaEmpresa;
