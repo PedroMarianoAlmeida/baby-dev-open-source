@@ -53,6 +53,7 @@ interface JobPostFormProps {
   curatorData: { id: string; name: string };
   refreshStackAllOptions(): void;
   refreshRequisitesOptions(): void;
+  refreshCompanyAutoComplete(): void;
   createJob(data: IPostJobData): Promise<string>;
   companiesAllOptions: ICompany[];
 }
@@ -65,6 +66,7 @@ const JobPostForm = ({
   refreshRequisitesOptions,
   createJob,
   companiesAllOptions,
+  refreshCompanyAutoComplete,
 }: JobPostFormProps) => {
   const [formError, setFormError] = useState("");
   const [backendMessage, setBackendMessage] = useState("");
@@ -193,6 +195,8 @@ const JobPostForm = ({
         <PostJobNewData
           href="/novaEmpresa"
           notFoundText="Não encontrou a empresa? Cadastre-a aqui"
+          updateField={refreshCompanyAutoComplete}
+          updateText="Após cadastrar, atualize o auto complete"
         />
         <TextInput
           onChange={onChangeCompany}

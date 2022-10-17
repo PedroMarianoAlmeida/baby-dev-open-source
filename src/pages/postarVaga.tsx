@@ -8,12 +8,19 @@ import { getAllCompaniesData } from "@services/company";
 import JobPostForm from "@organisms/forms/JobPostForm";
 import { UserContext } from "@contexts/UserContext";
 
-const PostJobPage = ({ stackAllOptions, requisitesOptions, companiesAllOptions }) => {
+const PostJobPage = ({
+  stackAllOptions,
+  requisitesOptions,
+  companiesAllOptions,
+}) => {
   const [localStackAllOptions, setLocalStackAllOptions] =
     useState(stackAllOptions);
 
   const [localRequisiteOptions, setLocalRequisiteOptions] =
     useState(requisitesOptions);
+
+  const [localCompaniesData, setLocalCompaniesData] =
+    useState(companiesAllOptions);
 
   const { currentUser } = useContext(UserContext);
   const { roles, id, name } = currentUser;
@@ -30,6 +37,11 @@ const PostJobPage = ({ stackAllOptions, requisitesOptions, companiesAllOptions }
     setLocalRequisiteOptions(newStackAllOptions);
   };
 
+  const refreshCompanyAutoComplete = async () => {
+    const newCompanies = await getAllCompaniesData();
+    setLocalCompaniesData(newCompanies);
+  };
+
   return (
     <>
       <JobPostForm
@@ -38,8 +50,9 @@ const PostJobPage = ({ stackAllOptions, requisitesOptions, companiesAllOptions }
         curatorData={{ id, name }}
         refreshStackAllOptions={refreshStackAllOptions}
         refreshRequisitesOptions={refreshRequisitesOptions}
+        refreshCompanyAutoComplete={refreshCompanyAutoComplete}
         createJob={createJob}
-        companiesAllOptions={companiesAllOptions}
+        companiesAllOptions={localCompaniesData}
       />
     </>
   );
