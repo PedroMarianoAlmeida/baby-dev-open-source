@@ -3,11 +3,12 @@ import { useContext, useState } from "react";
 import { getAllStackOptions } from "@services/stack";
 import { getRequisitesOptions } from "@services/requisites";
 import { createJob } from "@services/job";
+import { getAllCompaniesData } from "@services/company";
 
 import JobPostForm from "@organisms/forms/JobPostForm";
 import { UserContext } from "@contexts/UserContext";
 
-const PostJobPage = ({ stackAllOptions, requisitesOptions }) => {
+const PostJobPage = ({ stackAllOptions, requisitesOptions, companiesAllOptions }) => {
   const [localStackAllOptions, setLocalStackAllOptions] =
     useState(stackAllOptions);
 
@@ -38,19 +39,23 @@ const PostJobPage = ({ stackAllOptions, requisitesOptions }) => {
         refreshStackAllOptions={refreshStackAllOptions}
         refreshRequisitesOptions={refreshRequisitesOptions}
         createJob={createJob}
+        companiesAllOptions={companiesAllOptions}
       />
     </>
   );
 };
 
 export async function getServerSideProps(context) {
+  //Use Promise.all here
   const stackAllOptions = await getAllStackOptions();
   const requisitesOptions = await getRequisitesOptions();
+  const companiesAllOptions = await getAllCompaniesData();
 
   return {
     props: {
       stackAllOptions,
       requisitesOptions,
+      companiesAllOptions,
     },
   };
 }

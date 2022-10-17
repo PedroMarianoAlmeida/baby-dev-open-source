@@ -1,6 +1,14 @@
+export interface ICompany {
+  id: string;
+  name: string;
+  logo: string;
+  webSite: string;
+  linkedin: string;
+}
+
 export const addCompanyDataInJob = async (jobs) => {
-  const companiesId = jobs.map((job) => job.company);
-  const companiesData = await getCompaniesData(companiesId);
+  const companiesId: string[] = jobs.map((job) => job.company);
+  const companiesData: ICompany[] = await getCompaniesData(companiesId);
   const jobsWithCompanyData = jobs.map((job) => ({
     ...job,
     companyData: companiesData.find((company) => company.id === job.company),
@@ -20,7 +28,7 @@ export const getCompaniesData = async (companiesId: string[]) => {
     );
 
     if (res.ok) {
-      const data = await res.json();
+      const data: ICompany[] = await res.json();
       return data;
     }
   } catch (error) {
@@ -52,12 +60,24 @@ export const isCompanyAlreadyRegistered = async (companyName: string) => {
       `http://localhost:4000/companies?name=${companyName}`
     );
     if (res.ok) {
-      const data = await res.json();
+      const data: ICompany[] | [] = await res.json();
       return data.length > 0;
     }
     return "Erro";
   } catch (error) {
     console.log(error);
     return "Erro";
+  }
+};
+
+export const getAllCompaniesData = async (): Promise<ICompany[]> => {
+  try {
+    const res = await fetch(`http://localhost:4000/companies`);
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

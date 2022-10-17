@@ -1,11 +1,12 @@
 import { useState } from "react";
-import Link from "next/link";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import styles from "./JobPostForm.module.css";
+
+import { ICompany } from "@services/company";
 
 import TextInput from "@molecules/formComponents/TextInput";
 import TextArea from "@molecules/formComponents/TextArea";
@@ -53,6 +54,7 @@ interface JobPostFormProps {
   refreshStackAllOptions(): void;
   refreshRequisitesOptions(): void;
   createJob(data: IPostJobData): Promise<string>;
+  companiesAllOptions: ICompany[];
 }
 
 const JobPostForm = ({
@@ -62,9 +64,12 @@ const JobPostForm = ({
   requisitesOptions,
   refreshRequisitesOptions,
   createJob,
+  companiesAllOptions,
 }: JobPostFormProps) => {
   const [formError, setFormError] = useState("");
   const [backendMessage, setBackendMessage] = useState("");
+
+  console.log(companiesAllOptions);
 
   const {
     register,
