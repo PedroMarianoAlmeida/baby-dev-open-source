@@ -72,6 +72,10 @@ const JobPostForm = ({
   const [backendMessage, setBackendMessage] = useState("");
 
   console.log(companiesAllOptions);
+  const companiesToSelect = companiesAllOptions.map((company) => ({
+    id: company.id,
+    value: company.name,
+  }));
 
   const {
     register,
@@ -198,13 +202,15 @@ const JobPostForm = ({
           updateField={refreshCompanyAutoComplete}
           updateText="Após cadastrar, atualize o auto complete"
         />
-        <TextInput
+
+        <label>Empresa (temporário, será um input com autocomplete)</label>
+        <Select
           onChange={onChangeCompany}
           onBlur={onBlurCompany}
           name={nameCompany}
           ref={refCompany}
           errors={errors}
-          placeholder="Empresa"
+          options={companiesToSelect}
         />
 
         <TextArea
