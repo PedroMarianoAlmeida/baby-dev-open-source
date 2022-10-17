@@ -27,3 +27,21 @@ export const getCompaniesData = async (companiesId: string[]) => {
     console.log(error);
   }
 };
+
+export const createCompany = async (data) => {
+  try {
+    const res = await fetch(`http://localhost:4000/companies`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-type": "application/json;charset=UTF-8" },
+    });
+
+    if (res.ok) {
+      return "Cadastrado com sucesso";
+    }
+    return "Erro";
+  } catch (error) {
+    console.log(error);
+    return "Erro";
+  }
+};

@@ -21,7 +21,7 @@ const schema = yup
   })
   .required();
 
-const PostCompany = () => {
+const PostCompany = ({ createCompany }) => {
   const [formError, setFormError] = useState("");
   const [backendMessage, setBackendMessage] = useState("");
 
@@ -35,6 +35,14 @@ const PostCompany = () => {
   });
 
   const onSubmit = async (data: IFormInputs) => {
+    setBackendMessage("Cadastrando...");
+    const message = await createCompany(data);
+    setBackendMessage(message);
+    if (message === "Cadastrado com sucesso") {
+      setFormError("");
+      //reset form fields
+    }
+
     console.log(data);
   };
 

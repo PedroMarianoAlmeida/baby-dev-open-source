@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+import { createCompany } from "@services/company";
 import { UserContext } from "@contexts/UserContext";
 import PostCompany from "@organisms/forms/PostCompany/PostCompany";
 
@@ -11,7 +12,7 @@ const novaEmpresa = () => {
 
   return (
     <>
-      <PostCompany />
+      <PostCompany createCompany={createCompany} />
     </>
   );
 };
