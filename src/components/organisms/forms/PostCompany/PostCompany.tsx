@@ -40,6 +40,7 @@ const PostCompany = ({ createCompany, isCompanyAlreadyRegistered }) => {
     console.log(companyExist);
     if (companyExist) {
       setFormError("Empresa já cadastrada");
+      setBackendMessage("");
       return;
     }
     setBackendMessage("Cadastrando...");

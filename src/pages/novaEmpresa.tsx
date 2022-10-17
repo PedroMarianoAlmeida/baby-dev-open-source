@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { createCompany, isCompanyAlreadyRegistered } from "@services/company";
 import { UserContext } from "@contexts/UserContext";
-import PostCompany from "@organisms/forms/PostCompany/PostCompany";
+import PostCompany from "@organisms/forms/PostCompany";
 
 const novaEmpresa = () => {
   const { currentUser } = useContext(UserContext);
