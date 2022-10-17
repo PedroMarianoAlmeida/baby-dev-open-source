@@ -19,6 +19,7 @@ const curatorData = {
 const refreshStackAllOptions = () => {};
 const requisitesOptions = [{ id: "1", value: "Requisite 1" }];
 const refreshRequisitesOptions = () => {};
+const refreshCompanyAutoComplete = () => {};
 
 const Template: ComponentStory<typeof JobPostForm> = (args) => (
   <JobPostForm
@@ -28,6 +29,8 @@ const Template: ComponentStory<typeof JobPostForm> = (args) => (
     requisitesOptions={requisitesOptions}
     refreshRequisitesOptions={refreshRequisitesOptions}
     createJob={async () => ""}
+    refreshCompanyAutoComplete={refreshCompanyAutoComplete}
+    companiesAllOptions={[]}
   />
 );
 

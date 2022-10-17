@@ -1,3 +1,5 @@
+import { addCompanyDataInJob } from "./company";
+
 export const getRecentJobs = async () => {
   try {
     const res = await fetch(
@@ -5,7 +7,18 @@ export const getRecentJobs = async () => {
     );
     if (res.ok) {
       const data = await res.json();
-      return data;
+      const jobsWithCompanyData = await addCompanyDataInJob(data);
+
+      const dataSanitized = jobsWithCompanyData.map((job) => ({
+        companyName: job.companyData.name,
+        companyLogo: job.companyData.logo,
+        jobTitle: job.title,
+        jobLocation: job.location,
+        jobStack: job.stack,
+        createAt: job.createAt,
+      }));
+
+      return dataSanitized;
     }
   } catch (error) {
     console.log(error);

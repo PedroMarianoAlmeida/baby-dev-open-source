@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Link from "next/link";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,10 +6,13 @@ import * as yup from "yup";
 
 import styles from "./JobPostForm.module.css";
 
+import { ICompany } from "@services/company";
+
 import TextInput from "@molecules/formComponents/TextInput";
 import TextArea from "@molecules/formComponents/TextArea";
 import Select from "@molecules/formComponents/Select";
 import UserStackSelector from "@organisms/UserStackSelector";
+import PostJobNewData from "@molecules/formComponents/PostJobNewData";
 
 interface IFormInputs {
   company: string;
@@ -51,7 +53,9 @@ interface JobPostFormProps {
   curatorData: { id: string; name: string };
   refreshStackAllOptions(): void;
   refreshRequisitesOptions(): void;
+  refreshCompanyAutoComplete(): void;
   createJob(data: IPostJobData): Promise<string>;
+  companiesAllOptions: ICompany[];
 }
 
 const JobPostForm = ({
@@ -61,9 +65,17 @@ const JobPostForm = ({
   requisitesOptions,
   refreshRequisitesOptions,
   createJob,
+  companiesAllOptions,
+  refreshCompanyAutoComplete,
 }: JobPostFormProps) => {
   const [formError, setFormError] = useState("");
   const [backendMessage, setBackendMessage] = useState("");
+
+  console.log(companiesAllOptions);
+  const companiesToSelect = companiesAllOptions.map((company) => ({
+    id: company.id,
+    value: company.name,
+  }));
 
   const {
     register,
@@ -184,14 +196,21 @@ const JobPostForm = ({
           errors={errors}
           placeholder="Título"
         />
+        <PostJobNewData
+          href="/novaEmpresa"
+          notFoundText="Não encontrou a empresa? Cadastre-a aqui"
+          updateField={refreshCompanyAutoComplete}
+          updateText="Após cadastrar, atualize o auto complete"
+        />
 
-        <TextInput
+        <label>Empresa (temporário, será um input com autocomplete)</label>
+        <Select
           onChange={onChangeCompany}
           onBlur={onBlurCompany}
           name={nameCompany}
           ref={refCompany}
           errors={errors}
-          placeholder="Empresa"
+          options={companiesToSelect}
         />
 
         <TextArea
@@ -213,15 +232,12 @@ const JobPostForm = ({
           errors={errors}
           placeholder="Localização"
         />
-
-        <Link href="/novoRequisito" passHref>
-          <a target="_blank" rel="noopener noreferrer">
-            Não encontrou o Requisito? Cadastre um novo
-          </a>
-        </Link>
-        <button onClick={refreshRequisitesOptions} type="button">
-          Após cadastrar, atualize o Select
-        </button>
+        <PostJobNewData
+          href="/novoRequisito"
+          notFoundText="Não encontrou o Requisito? Cadastre um novo"
+          updateField={refreshRequisitesOptions}
+          updateText="Após cadastrar, atualize o Select"
+        />
         <Select
           onChange={onChangeRequisites}
           onBlur={onBlurRequisites}
@@ -232,14 +248,12 @@ const JobPostForm = ({
           multiple
         />
 
-        <Link href="/novaStack" passHref>
-          <a target="_blank" rel="noopener noreferrer">
-            Não encontrou a Tecnologia? Cadastre uma nova
-          </a>
-        </Link>
-        <button onClick={refreshStackAllOptions} type="button">
-          Após cadastrar, atualize o Select
-        </button>
+        <PostJobNewData
+          href="/novaStack"
+          notFoundText="Não encontrou a Tecnologia? Cadastre uma nova"
+          updateField={refreshStackAllOptions}
+          updateText="Após cadastrar, atualize o Select"
+        />
 
         <UserStackSelector
           allOptions={stackAllOptions}
