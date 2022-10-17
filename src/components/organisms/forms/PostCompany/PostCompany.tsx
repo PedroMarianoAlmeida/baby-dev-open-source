@@ -21,7 +21,7 @@ const schema = yup
   })
   .required();
 
-const PostCompany = ({ createCompany }) => {
+const PostCompany = ({ createCompany, isCompanyAlreadyRegistered }) => {
   const [formError, setFormError] = useState("");
   const [backendMessage, setBackendMessage] = useState("");
 
@@ -35,6 +35,13 @@ const PostCompany = ({ createCompany }) => {
   });
 
   const onSubmit = async (data: IFormInputs) => {
+    setBackendMessage("Verificando...");
+    const companyExist = await isCompanyAlreadyRegistered(data.name);
+    console.log(companyExist);
+    if (companyExist) {
+      setFormError("Empresa já cadastrada");
+      return;
+    }
     setBackendMessage("Cadastrando...");
     const message = await createCompany(data);
     setBackendMessage(message);
@@ -42,8 +49,6 @@ const PostCompany = ({ createCompany }) => {
       setFormError("");
       //reset form fields
     }
-
-    console.log(data);
   };
 
   const {

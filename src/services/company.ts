@@ -45,3 +45,19 @@ export const createCompany = async (data) => {
     return "Erro";
   }
 };
+
+export const isCompanyAlreadyRegistered = async (companyName: string) => {
+  try {
+    const res = await fetch(
+      `http://localhost:4000/companies?name=${companyName}`
+    );
+    if (res.ok) {
+      const data = await res.json();
+      return data.length > 0;
+    }
+    return "Erro";
+  } catch (error) {
+    console.log(error);
+    return "Erro";
+  }
+};

@@ -111,7 +111,7 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 
 ### Queries
 
-- [sort](https://www.npmjs.com/package/json-server#sort), [limit](https://www.npmjs.com/package/json-server#slice) e [filter](https://www.npmjs.com/package/json-server#filter): Usadas em Buscas Recentes
+- [sort](https://github.com/typicode/json-server#slice), [limit](https://github.com/typicode/json-server#slice) e [filter](https://github.com/typicode/json-server#filter): Usadas em Buscas Recentes
 
 ### Outros
 
