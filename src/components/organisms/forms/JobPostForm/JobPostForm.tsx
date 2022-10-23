@@ -18,7 +18,7 @@ import PostJobNewData from "@molecules/formComponents/PostJobNewData";
 const schema = yup
   .object({
     title: yup.string().required(),
-    company: yup.string().required(),
+    company: yup.number().required(),
     description: yup.string().required(),
     location: yup.string().required(),
     requisites: yup.array().required(),
@@ -29,9 +29,9 @@ const schema = yup
   .required();
 
 interface JobPostFormProps {
-  stackAllOptions: { id: string; name: string; stack: string[] }[];
-  requisitesOptions: { id: string; value: string }[];
-  curatorData: { id: string; name: string };
+  stackAllOptions: { id: number; name: string; stack: string[] }[];
+  requisitesOptions: { id: number; value: string }[];
+  curatorData: { id: number; name: string };
   refreshStackAllOptions(): void;
   refreshRequisitesOptions(): void;
   refreshCompanyAutoComplete(): void;
@@ -85,12 +85,12 @@ const JobPostForm = ({
       return;
     }
 
-    const indicatedBy = ""; //This come from outside the form - and it is optional
+    const indicatedBy = 1; //This come from outside the form - and it is optional
     const now = new Date();
 
     const jobPost: IJob = {
       title,
-      company: Number(company),
+      company,
       description,
       location,
       requisites,
@@ -100,8 +100,8 @@ const JobPostForm = ({
       status: "open",
       createAt: now,
       modifiedAt: now,
-      curator: Number(curatorData.id),
-      indicatedBy: Number(indicatedBy),
+      curator: curatorData.id,
+      indicatedBy,
       blob: `${title} ${company} ${
         curatorData.name
       } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,

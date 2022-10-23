@@ -2,7 +2,7 @@ import { useState, createContext } from "react";
 import { userLogin } from "@services/user";
 
 interface IUser {
-  id: string;
+  id: number;
   name: string;
   image: string;
   roles: string[];
@@ -10,7 +10,7 @@ interface IUser {
 }
 
 const emptyUser: IUser = {
-  id: "",
+  id: null,
   name: "",
   image: "",
   roles: [],

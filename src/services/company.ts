@@ -1,5 +1,5 @@
 export interface ICompany {
-  id: string;
+  id: number;
   name: string;
   logo: string;
   webSite: string;
