@@ -120,3 +120,4 @@ Aquele lance do import ter `import { alguma coisa } from '@issoÉPathMapping'`
 - [Explicação do Atômic Design](https://www.youtube.com/watch?v=XGPRyL7TXsk&t=159s)
 - [Playlist Spotify que me ajuda na concentração =D](https://open.spotify.com/playlist/5O0m5JxHVsyBWTYW5yuR12)
 - [Criando incluindo no projeto uma Favicon](https://dev.to/jcubic/favicon-for-next-js-and-typescript-9gk)
+- [Pegando o nome por extenso do mês a partir da data](https://stackoverflow.com/a/18648314/12828114)

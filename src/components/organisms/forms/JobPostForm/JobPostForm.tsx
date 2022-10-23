@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import kebabCase from "just-kebab-case";
+
 import styles from "./JobPostForm.module.css";
 
 import { ICompany } from "@services/company";
@@ -88,6 +90,17 @@ const JobPostForm = ({
     const indicatedBy = 1; //This come from outside the form - and it is optional
     const now = new Date();
 
+    const blobYear = now.getFullYear();
+    const blobMonth = now.toLocaleString("pt-BR", {
+      month: "long",
+    });
+    const blogDay = now.getDay() + 1;
+    const blobStack = stack.join("-");
+
+    const blob = kebabCase(
+      `${title} ${blobStack} ${company} ${curatorData.name} ${blobYear} ${blobMonth} ${blogDay}`
+    );
+
     const jobPost: IJob = {
       title,
       company,
@@ -102,9 +115,7 @@ const JobPostForm = ({
       modifiedAt: now,
       curator: curatorData.id,
       indicatedBy,
-      blob: `${title} ${company} ${
-        curatorData.name
-      } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
+      blob,
     };
 
     setBackendMessage("Cadastrando...");
