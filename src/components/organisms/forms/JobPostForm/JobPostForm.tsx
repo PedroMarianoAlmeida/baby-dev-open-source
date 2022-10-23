@@ -7,6 +7,7 @@ import * as yup from "yup";
 import styles from "./JobPostForm.module.css";
 
 import { ICompany } from "@services/company";
+import { IJob } from "@services/job";
 
 import TextInput from "@molecules/formComponents/TextInput";
 import TextArea from "@molecules/formComponents/TextArea";
@@ -14,30 +15,10 @@ import Select from "@molecules/formComponents/Select";
 import UserStackSelector from "@organisms/UserStackSelector";
 import PostJobNewData from "@molecules/formComponents/PostJobNewData";
 
-interface IFormInputs {
-  company: string;
-  description: string;
-  location: string;
-  requisites: string[];
-  stack: string[];
-  title: string;
-  url: string;
-  source: string;
-}
-
-interface IPostJobData extends IFormInputs {
-  status: string;
-  createAt: Date;
-  modifiedAt: Date;
-  curator: string;
-  indicatedBy: string;
-  blob: string;
-}
-
 const schema = yup
   .object({
     title: yup.string().required(),
-    company: yup.string().required(),
+    company: yup.number().required(),
     description: yup.string().required(),
     location: yup.string().required(),
     requisites: yup.array().required(),
@@ -48,13 +29,13 @@ const schema = yup
   .required();
 
 interface JobPostFormProps {
-  stackAllOptions: { id: string; name: string; stack: string[] }[];
-  requisitesOptions: { id: string; value: string }[];
-  curatorData: { id: string; name: string };
+  stackAllOptions: { id: number; name: string; stack: string[] }[];
+  requisitesOptions: { id: number; value: string }[];
+  curatorData: { id: number; name: string };
   refreshStackAllOptions(): void;
   refreshRequisitesOptions(): void;
   refreshCompanyAutoComplete(): void;
-  createJob(data: IPostJobData): Promise<string>;
+  createJob(data: IJob): Promise<string>;
   companiesAllOptions: ICompany[];
 }
 
@@ -83,11 +64,11 @@ const JobPostForm = ({
     formState: { errors },
     watch,
     control,
-  } = useForm<IFormInputs>({
+  } = useForm<Partial<IJob>>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: IFormInputs) => {
+  const onSubmit = async (data: IJob) => {
     const {
       title,
       company,
@@ -104,10 +85,10 @@ const JobPostForm = ({
       return;
     }
 
-    const indicatedBy = ""; //This come from outside the form - and it is optional
+    const indicatedBy = 1; //This come from outside the form - and it is optional
     const now = new Date();
 
-    const jobPost = {
+    const jobPost: IJob = {
       title,
       company,
       description,

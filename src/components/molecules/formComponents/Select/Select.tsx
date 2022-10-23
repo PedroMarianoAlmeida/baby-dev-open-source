@@ -2,7 +2,7 @@ import { forwardRef, RefObject, SelectHTMLAttributes } from "react";
 import ErrorMessageForm from "@atoms/ErrorMessageForm";
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  options: { id: string; value: string }[];
+  options: { id: number; value: string }[];
   errors: {};
 }
 
