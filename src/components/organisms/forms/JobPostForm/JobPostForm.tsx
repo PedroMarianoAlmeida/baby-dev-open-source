@@ -88,6 +88,12 @@ const JobPostForm = ({
     const indicatedBy = 1; //This come from outside the form - and it is optional
     const now = new Date();
 
+    const blobMonth = now.toLocaleString("pt-BR", {
+      month: "long",
+    });
+    const blogDay = now.getDay() + 1;
+    const blobStack = stack.join("-");
+
     const jobPost: IJob = {
       title,
       company,
@@ -102,11 +108,7 @@ const JobPostForm = ({
       modifiedAt: now,
       curator: curatorData.id,
       indicatedBy,
-      blob: `${title} ${company} ${
-        curatorData.name
-      } ${now.getFullYear()} ${now.toLocaleString("pt-BR", {
-        month: "long",
-      })} ${now.getDay() + 1}`,
+      blob: `${title} ${blobStack} ${company} ${curatorData.name} ${blobMonth} ${blogDay}`,
     };
 
     setBackendMessage("Cadastrando...");
