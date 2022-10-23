@@ -90,6 +90,7 @@ const JobPostForm = ({
     const indicatedBy = 1; //This come from outside the form - and it is optional
     const now = new Date();
 
+    const blobYear = now.getFullYear();
     const blobMonth = now.toLocaleString("pt-BR", {
       month: "long",
     });
@@ -97,7 +98,7 @@ const JobPostForm = ({
     const blobStack = stack.join("-");
 
     const blob = kebabCase(
-      `${title} ${blobStack} ${company} ${curatorData.name} ${blobMonth} ${blogDay}`
+      `${title} ${blobStack} ${company} ${curatorData.name} ${blobYear} ${blobMonth} ${blogDay}`
     );
 
     const jobPost: IJob = {
