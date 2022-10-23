@@ -104,7 +104,9 @@ const JobPostForm = ({
       indicatedBy,
       blob: `${title} ${company} ${
         curatorData.name
-      } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
+      } ${now.getFullYear()} ${now.toLocaleString("pt-BR", {
+        month: "long",
+      })} ${now.getDay() + 1}`,
     };
 
     setBackendMessage("Cadastrando...");
