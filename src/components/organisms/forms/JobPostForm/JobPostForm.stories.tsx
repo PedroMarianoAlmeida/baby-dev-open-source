@@ -7,30 +7,29 @@ export default {
   component: JobPostForm,
 } as ComponentMeta<typeof JobPostForm>;
 
-const stackAllOptions = {
-  id: "1",
-  name: "Stack Group",
-  stack: ["stack1", "stack2", "stack3"],
-};
-const curatorData = {
-  id: "1",
-  name: "Curator Name",
-};
-const refreshStackAllOptions = () => {};
-const requisitesOptions = [{ id: "1", value: "Requisite 1" }];
-const refreshRequisitesOptions = () => {};
-const refreshCompanyAutoComplete = () => {};
+const stackAllOptions = [{ id: 1, name: "stackName", stack: ["react"] }];
+const requisitesOptions = [{ id: 1, value: "RequisiteValue" }];
+const curatorData = { id: 1, name: "CuratorName" };
+const companiesAllOptions = [
+  {
+    id: 1,
+    name: "CompanyName",
+    logo: "CompanyLogo",
+    webSite: "CompanyWebSite",
+    linkedin: "CompanyLinkedIn",
+  },
+];
 
 const Template: ComponentStory<typeof JobPostForm> = (args) => (
   <JobPostForm
-    stackAllOptions={[stackAllOptions]}
-    curatorData={curatorData}
-    refreshStackAllOptions={refreshStackAllOptions}
+    stackAllOptions={stackAllOptions}
     requisitesOptions={requisitesOptions}
-    refreshRequisitesOptions={refreshRequisitesOptions}
-    createJob={async () => ""}
-    refreshCompanyAutoComplete={refreshCompanyAutoComplete}
-    companiesAllOptions={[]}
+    curatorData={curatorData}
+    refreshStackAllOptions={() => {}}
+    refreshRequisitesOptions={() => {}}
+    refreshCompanyAutoComplete={() => {}}
+    createJob={Promise.resolve}
+    companiesAllOptions={companiesAllOptions}
   />
 );
 
