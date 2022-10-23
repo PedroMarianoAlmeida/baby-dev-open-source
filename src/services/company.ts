@@ -8,7 +8,9 @@ export interface ICompany {
 
 export const addCompanyDataInJob = async (jobs) => {
   const companiesId: string[] = jobs.map((job) => job.company);
-  const companiesData: ICompany[] = await getCompaniesData(companiesId);
+  const companiesUniqueId: string[] = [...new Set(companiesId)];
+  console.log({ companiesUniqueId });
+  const companiesData: ICompany[] = await getCompaniesData(companiesUniqueId);
   const jobsWithCompanyData = jobs.map((job) => ({
     ...job,
     companyData: companiesData.find((company) => company.id === job.company),
@@ -21,7 +23,7 @@ export const getCompaniesData = async (companiesId: string[]) => {
     (companyId: string) => `id=${companyId}&`
   );
   const companiesQueryUrl = `?${companiesQuery.join("").slice(0, -1)}`; //Slice remove the  last "&'
-  console.log(companiesQueryUrl);
+
   try {
     const res = await fetch(
       `http://localhost:4000/companies${companiesQueryUrl}`

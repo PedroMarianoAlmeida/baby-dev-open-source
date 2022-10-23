@@ -7,32 +7,13 @@ import * as yup from "yup";
 import styles from "./JobPostForm.module.css";
 
 import { ICompany } from "@services/company";
+import { IJob } from "@services/job";
 
 import TextInput from "@molecules/formComponents/TextInput";
 import TextArea from "@molecules/formComponents/TextArea";
 import Select from "@molecules/formComponents/Select";
 import UserStackSelector from "@organisms/UserStackSelector";
 import PostJobNewData from "@molecules/formComponents/PostJobNewData";
-
-interface IFormInputs {
-  company: string;
-  description: string;
-  location: string;
-  requisites: string[];
-  stack: string[];
-  title: string;
-  url: string;
-  source: string;
-}
-
-interface IPostJobData extends IFormInputs {
-  status: string;
-  createAt: Date;
-  modifiedAt: Date;
-  curator: string;
-  indicatedBy: string;
-  blob: string;
-}
 
 const schema = yup
   .object({
@@ -54,7 +35,7 @@ interface JobPostFormProps {
   refreshStackAllOptions(): void;
   refreshRequisitesOptions(): void;
   refreshCompanyAutoComplete(): void;
-  createJob(data: IPostJobData): Promise<string>;
+  createJob(data: IJob): Promise<string>;
   companiesAllOptions: ICompany[];
 }
 
@@ -83,11 +64,11 @@ const JobPostForm = ({
     formState: { errors },
     watch,
     control,
-  } = useForm<IFormInputs>({
+  } = useForm<Partial<IJob>>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: IFormInputs) => {
+  const onSubmit = async (data: IJob) => {
     const {
       title,
       company,
@@ -107,9 +88,9 @@ const JobPostForm = ({
     const indicatedBy = ""; //This come from outside the form - and it is optional
     const now = new Date();
 
-    const jobPost = {
+    const jobPost: IJob = {
       title,
-      company,
+      company: Number(company),
       description,
       location,
       requisites,
@@ -119,8 +100,8 @@ const JobPostForm = ({
       status: "open",
       createAt: now,
       modifiedAt: now,
-      curator: curatorData.id,
-      indicatedBy,
+      curator: Number(curatorData.id),
+      indicatedBy: Number(indicatedBy),
       blob: `${title} ${company} ${
         curatorData.name
       } ${now.getFullYear()} ${now.getMonth()} ${now.getDay()}`,
