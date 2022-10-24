@@ -21,7 +21,7 @@ interface IFormInputs {
 
 const schema = yup
   .object({
-    stack: yup.array().required(),
+    stack: yup.array().required().min(1),
     requisites: yup.array(),
   })
   .required();

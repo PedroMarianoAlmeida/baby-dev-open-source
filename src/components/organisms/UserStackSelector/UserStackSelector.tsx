@@ -10,13 +10,17 @@ const UserStackSelector = ({ control, initialSelected, allOptions }) => (
   <Controller
     control={control}
     name="stack"
-    render={({ field: { onChange, onBlur, value, ref } }) => (
+    render={({
+      field: { onChange, onBlur, value, ref },
+      fieldState: { error },
+    }) => (
       <UserStackSelectorStructure
         onChange={onChange} // send value to hook form
         //onBlur={onBlur} // notify when input is touched/blur
         //selected={value}
         allOptions={allOptions}
         initialSelected={initialSelected}
+        errorMsg={error?.message}
       />
     )}
   />
@@ -26,12 +30,14 @@ interface UserStackSelectorProps {
   initialSelected: string[];
   allOptions: { name: string; stack: string[] }[];
   onChange(selected: string[]): void;
+  errorMsg: string;
 }
 
 export const UserStackSelectorStructure = ({
   initialSelected,
   allOptions,
   onChange,
+  errorMsg,
 }: UserStackSelectorProps) => {
   const [selected, setSelected] = useState(initialSelected);
   const [showOptions, setShowOptions] = useState(false);
@@ -58,6 +64,7 @@ export const UserStackSelectorStructure = ({
 
   return (
     <div id={root}>
+      <p>{errorMsg}</p>
       <TopContainer
         selected={selected}
         removeSelected={removeSelected}
