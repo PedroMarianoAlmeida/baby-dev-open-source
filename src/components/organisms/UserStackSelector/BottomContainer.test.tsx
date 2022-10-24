@@ -1,5 +1,6 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, logRoles } from "@testing-library/react";
 import BottomContainer from "./BottomContainer";
+
 import "@testing-library/jest-dom";
 
 describe("organism > UserStackSelector > BottomContainer", () => {
@@ -20,20 +21,23 @@ describe("organism > UserStackSelector > BottomContainer", () => {
     expect(screen.getByText("stack2")).toBeInTheDocument();
   });
 
-  it.skip("isSelected property is assign correctly", () => {
+  it("isSelected property is assign correctly", () => {
+    const addSelected = jest.fn();
     render(
       <BottomContainer
         showOptions
         setShowOptions={() => {}}
         selected={["stack1"]}
-        addSelected={() => {}}
+        addSelected={addSelected}
         removeSelected={() => {}}
         options={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
       />
     );
-
-    expect(screen.getByText("stack1")).toHaveAttribute("isSelected", true);
-    expect(screen.getByText("stack2")).toHaveAttribute("isSelected", false);
+    
+    // check class selected after of declare in selected
+    expect(screen.queryByRole("heading", { name: "stack1" })).toHaveClass(
+      "selected"
+    );
   });
 
   it("don't show stack group and options when showOptions is false", () => {
