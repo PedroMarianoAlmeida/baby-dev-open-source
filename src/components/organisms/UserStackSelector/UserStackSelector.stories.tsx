@@ -52,6 +52,7 @@ const Template: ComponentStory<typeof UserStackSelectorStructure> = (args) => (
     initialSelected={initialSelected}
     allOptions={allOptions}
     onChange={() => {}}
+    errorMsg=""
   />
 );
 
