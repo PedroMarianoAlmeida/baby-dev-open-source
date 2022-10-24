@@ -1,0 +1,30 @@
+#stackContainer {
+  width: 372px;
+  height: 300px;
+  left: 196px;
+  top: 146px;
+  background: #f0f0f0;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 2;
+  overflow-y: scroll;
+  padding: 12px;
+}
+
+.stackGroupTitle {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #210037;
+}
+
+.stacksGroupContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
