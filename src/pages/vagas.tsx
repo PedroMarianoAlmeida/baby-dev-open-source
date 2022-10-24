@@ -16,12 +16,12 @@ import JobCardGrid from "@organisms/JobCardGrid";
 
 interface IFormInputs {
   stack: string[];
-  requisites: string[];
+  requisites: number[];
 }
 
 const schema = yup
   .object({
-    stack: yup.string(),
+    stack: yup.array().required(),
     requisites: yup.array(),
   })
   .required();
