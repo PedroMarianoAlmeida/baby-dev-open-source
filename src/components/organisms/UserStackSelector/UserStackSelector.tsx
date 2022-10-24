@@ -3,8 +3,8 @@ import { Controller } from "react-hook-form";
 
 import styles from "./UserStackSelector.module.css";
 
-import TopContainer from "./TopContainer";
-import BottomContainer from "./BottomContainer";
+import TopContainer from "../TopContainer";
+import BottomContainer from "../BottomContainer";
 
 const UserStackSelector = ({ control, initialSelected, allOptions }) => (
   <Controller
