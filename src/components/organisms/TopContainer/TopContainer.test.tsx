@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import TopContainer from "./TopContainer";
+import TopContainer from ".";
 import "@testing-library/jest-dom";
 
 describe("organism > UserStackSelector > TopContainer", () => {

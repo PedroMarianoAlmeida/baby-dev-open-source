@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import styles from "./UserStackSelector.module.css";
+import styles from "./TopContainer.module.css";
 import StackBadge from "@atoms/StackBadge";
 
 interface TopContainerProps {
-  selected:  string [];
+  selected: string[];
   removeSelected(id: string): void;
   showOptions: boolean;
   setShowOptions(option: boolean): void;

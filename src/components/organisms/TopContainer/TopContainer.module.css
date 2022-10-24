@@ -1,0 +1,35 @@
+#searchContainer {
+  width: 432px;
+  min-height: 44px;
+  left: 196px;
+  top: 98px;
+  background: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 15px 12px;
+}
+
+#selectedContainer {
+  margin-left: 12px;
+  display: flex;
+  gap: 4px;
+  padding-bottom: 6px;
+  overflow-x: auto;
+}
+
+/* ESTILIZAÇÃO DA SCROLLBAR */
+#selectedContainer::-webkit-scrollbar {
+  width: 12px;
+  height: 10px;
+}
+#selectedContainer::-webkit-scrollbar-track {
+  background: rgba(202, 200, 196, 0.295);
+  border-radius: 20px;
+}
+#selectedContainer::-webkit-scrollbar-thumb {
+  background-color: #44036e;
+  border-radius: 20px;
+  border: 2px solid rgb(255, 255, 255);
+}
