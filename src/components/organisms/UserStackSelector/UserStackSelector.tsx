@@ -42,6 +42,8 @@ export const UserStackSelectorStructure = ({
   const [selected, setSelected] = useState(initialSelected);
   const [showOptions, setShowOptions] = useState(false);
 
+  const toggleShowOptions = () => setShowOptions(!showOptions);
+
   useEffect(() => {
     onChange(selected);
   }, [selected]);
@@ -68,8 +70,7 @@ export const UserStackSelectorStructure = ({
       <TopContainer
         selected={selected}
         removeSelected={removeSelected}
-        showOptions={showOptions}
-        setShowOptions={setShowOptions}
+        toggleShowOptions={toggleShowOptions}
       />
       <BottomContainer
         showOptions={showOptions}
