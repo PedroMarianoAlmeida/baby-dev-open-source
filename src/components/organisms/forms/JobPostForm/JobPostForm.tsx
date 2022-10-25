@@ -271,7 +271,7 @@ const JobPostForm = ({
           placeholder="Fonte"
         />
 
-        <input type="submit" />
+        <button>Submit</button>
         <p>{formError}</p>
         <p>{backendMessage}</p>
       </form>
