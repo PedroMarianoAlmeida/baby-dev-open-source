@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import TopContainer from "./TopContainer";
+import TopContainer from ".";
 import "@testing-library/jest-dom";
 
 describe("organism > UserStackSelector > TopContainer", () => {
@@ -8,8 +8,7 @@ describe("organism > UserStackSelector > TopContainer", () => {
       <TopContainer
         selected={[]}
         removeSelected={() => {}}
-        showOptions={true}
-        setShowOptions={() => {}}
+        toggleShowOptions={() => {}}
       />
     );
 
@@ -21,8 +20,7 @@ describe("organism > UserStackSelector > TopContainer", () => {
       <TopContainer
         selected={["stack1"]}
         removeSelected={() => {}}
-        showOptions={true}
-        setShowOptions={() => {}}
+        toggleShowOptions={() => {}}
       />
     );
 
@@ -36,8 +34,7 @@ describe("organism > UserStackSelector > TopContainer", () => {
       <TopContainer
         selected={[]}
         removeSelected={() => {}}
-        showOptions={true}
-        setShowOptions={setShowOptions}
+        toggleShowOptions={setShowOptions}
       />
     );
 
@@ -47,13 +44,11 @@ describe("organism > UserStackSelector > TopContainer", () => {
 
   it("it trigger removeSelected after click in a selected item", () => {
     const removeSelected = jest.fn();
-
     render(
       <TopContainer
         selected={["stack1"]}
         removeSelected={removeSelected}
-        showOptions={true}
-        setShowOptions={() => {}}
+        toggleShowOptions={() => {}}
       />
     );
 

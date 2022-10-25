@@ -1,20 +1,18 @@
 import Image from "next/image";
 
-import styles from "./UserStackSelector.module.css";
+import styles from "./TopContainer.module.css";
 import StackBadge from "@atoms/StackBadge";
 
 interface TopContainerProps {
-  selected:  string [];
+  selected: string[];
   removeSelected(id: string): void;
-  showOptions: boolean;
-  setShowOptions(option: boolean): void;
+  toggleShowOptions: () => void;
 }
 
 const TopContainer = ({
   selected,
   removeSelected,
-  showOptions,
-  setShowOptions,
+  toggleShowOptions
 }: TopContainerProps) => {
   const { searchContainer, selectedContainer, stackBadgeContainer } = styles;
 
@@ -27,7 +25,7 @@ const TopContainer = ({
   };
 
   return (
-    <div id={searchContainer} onClick={() => setShowOptions(!showOptions)}>
+    <div id={searchContainer} onClick={toggleShowOptions}>
       <Image src={"/icons/magnifying-glass.svg"} width={22} height={22} />
       <div id={selectedContainer}>
         {selected.map((stack) => (
