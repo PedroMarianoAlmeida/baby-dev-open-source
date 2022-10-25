@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import useDebounce from "src/hooks/useDebounce";
-import styles from "./UserStackSelector.module.css";
+import styles from "./BottomContainer.module.css";
 import StackBadge from "@atoms/StackBadge";
 
 interface BottomContainerProps {
