@@ -1,3 +1,12 @@
+:root {
+  --error: red;
+  --primary-color: #D7225E;
+  --dark-blue: #210037;
+  --white: #fff;
+  --white-900: #F0F0F0;
+  --black-700: #202020;
+}
+
 html,
 body {
   padding: 0;
