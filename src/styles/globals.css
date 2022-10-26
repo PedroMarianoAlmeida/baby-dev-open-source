@@ -12,7 +12,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background: #210037;
+  background: var(--dark-blue);
 }
 
 * {
@@ -28,5 +28,5 @@ body {
 }
 
 .title{
-  color: #D7225E;
+  color: var(--primary-color);
 }
