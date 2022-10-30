@@ -22,7 +22,7 @@
 }
 
 .name {
-  color: #202020;
+  color: var(--black-700);
   margin: 0;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .title {
-  color: #210037;
+  color: var(--dark-blue);
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -39,7 +39,7 @@
 }
 
 .place {
-  color: #202020;
+  color: var(--black-700);
   margin: 10px;
 }
 

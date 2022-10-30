@@ -1,11 +1,10 @@
 #root {
-
   height: 22px;
   font-style: normal;
   font-weight: 500;
   font-size: 8px;
   line-height: 10px;
-  color: #202020;
+  color: var(--black-700);
   border: 1px solid #cccaca;
   border-radius: 50px;
   margin: 0;
@@ -17,9 +16,9 @@
 }
 
 .selected {
-  background-color: #d7225e;
-  color: #f0f0f0 !important;
-  border-color: #d7225e !important;
+  background-color: var(--primary-color);
+  color: var(--white-900) !important;
+  border-color: var(--primary-color) !important;
 }
 
 #complement {

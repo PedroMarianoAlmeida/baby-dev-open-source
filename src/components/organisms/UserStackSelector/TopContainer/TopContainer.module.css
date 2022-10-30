@@ -3,8 +3,8 @@
   min-height: 44px;
   left: 196px;
   top: 98px;
-  background: #f0f0f0;
-  border: 1px solid #f0f0f0;
+  background: var(--white-900);
+  border: 1px solid var(--white-900);
   border-radius: 30px;
   display: flex;
   align-items: center;

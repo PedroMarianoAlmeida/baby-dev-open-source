@@ -3,7 +3,7 @@
   height: 300px;
   left: 196px;
   top: 146px;
-  background: #f0f0f0;
+  background: var(--white-900);
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.45);
   border-radius: 10px;
   position: absolute;
@@ -20,7 +20,7 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  color: #210037;
+  color: var(--dark-blue);
 }
 
 .stacksGroupContainer {
