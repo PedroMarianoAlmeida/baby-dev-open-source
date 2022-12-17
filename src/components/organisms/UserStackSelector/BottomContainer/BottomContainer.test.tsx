@@ -100,7 +100,6 @@ describe("organism > UserStackSelector > BottomContainer", () => {
       removeSelected={() => {}}
       options={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
     />)
-    
 
     // Test when the mouse enters
     fireEvent.mouseOver(container)
@@ -110,7 +109,7 @@ describe("organism > UserStackSelector > BottomContainer", () => {
     fireEvent.mouseOut(container)
     expect(getByText(container, 'Stack Group')).toBeInTheDocument()
 
-    
+    // Test when mouse stay in the component
     setTimeout(() => {
       expect(getByText(container, 'Stack Group')).toBeInTheDocument()
     }, 1000)
