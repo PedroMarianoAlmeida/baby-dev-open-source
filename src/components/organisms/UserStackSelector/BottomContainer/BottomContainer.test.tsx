@@ -1,5 +1,5 @@
-import { render, screen, fireEvent, logRoles } from "@testing-library/react";
-import BottomContainer from "./BottomContainer";
+import { render, screen, fireEvent, logRoles, waitFor, getByText } from "@testing-library/react";
+import BottomContainer from './BottomContainer';
 
 import "@testing-library/jest-dom";
 
@@ -88,4 +88,31 @@ describe("organism > UserStackSelector > BottomContainer", () => {
     fireEvent.click(screen.getByText("stack1"));
     expect(removeSelected).toBeCalledWith("stack1");
   });
+
+  it("closes when mouse enters, leaves, or stays away", async () => {
+
+    //Setup the component
+    const { container } = render(<BottomContainer 
+      showOptions
+      setShowOptions={() => {}}
+      selected={[]}
+      addSelected={() => {}}
+      removeSelected={() => {}}
+      options={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+    />)
+    
+
+    // Test when the mouse enters
+    fireEvent.mouseOver(container)
+    expect(getByText(container, 'Stack Group')).toBeInTheDocument()
+
+    // Test when the mouse leaves
+    fireEvent.mouseOut(container)
+    expect(getByText(container, 'Stack Group')).toBeInTheDocument()
+
+    // Test the behavior when the mouse stays away for a while
+    setTimeout(() => {
+      expect(getByText(container, 'Stack Group')).toBeInTheDocument()
+    }, 1000)
+  })
 });
