@@ -110,7 +110,7 @@ describe("organism > UserStackSelector > BottomContainer", () => {
     fireEvent.mouseOut(container)
     expect(getByText(container, 'Stack Group')).toBeInTheDocument()
 
-    // Test the behavior when the mouse stays away for a while
+    
     setTimeout(() => {
       expect(getByText(container, 'Stack Group')).toBeInTheDocument()
     }, 1000)
