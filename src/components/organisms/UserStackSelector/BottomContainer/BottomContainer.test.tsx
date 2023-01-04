@@ -1,5 +1,5 @@
-import { render, screen, fireEvent, logRoles } from "@testing-library/react";
-import BottomContainer from "./BottomContainer";
+import { render, screen, fireEvent, logRoles, waitFor, getByText, queryByText } from "@testing-library/react";
+import BottomContainer from './BottomContainer';
 
 import "@testing-library/jest-dom";
 
@@ -88,4 +88,53 @@ describe("organism > UserStackSelector > BottomContainer", () => {
     fireEvent.click(screen.getByText("stack1"));
     expect(removeSelected).toBeCalledWith("stack1");
   });
+
+  it("it able to stay on the menu when mouse enters", async () => {
+
+    const { container } = render(<BottomContainer 
+      showOptions
+      setShowOptions={() => {}}
+      selected={[]}
+      addSelected={() => {}}
+      removeSelected={() => {}}
+      options={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+    />)
+
+    fireEvent.mouseOver(container)
+    expect(getByText(container, 'Stack Group')).toBeInTheDocument()
+  })
+
+  it("it able to close the menu after 1s when mouse leaves", async () => {
+    const { container } = render(<BottomContainer 
+      showOptions
+      setShowOptions={() => {}}
+      selected={[]}
+      addSelected={() => {}}
+      removeSelected={() => {}}
+      options={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+    />)
+
+    fireEvent.mouseLeave(container)
+
+    setTimeout(() => {
+        expect(queryByText(container, "Stack Group")).toBeNull()
+    }, 1000)
+  })
+
+  it("it able to stay on menu when the mouse entered after some seconds", async () => {
+    const { container } = render(<BottomContainer 
+      showOptions
+      setShowOptions={() => {}}
+      selected={[]}
+      addSelected={() => {}}
+      removeSelected={() => {}}
+      options={[{ name: "Stack Group", stack: ["stack1", "stack2"] }]}
+    />)
+
+    fireEvent.mouseEnter(container)
+
+    setTimeout(() => {
+        expect(queryByText(container, "Stack Group")).toBeInTheDocument()
+    }, 2000)
+  })
 });
