@@ -40,7 +40,7 @@ describe("organism > JobPostForm", () => {
     expect(screen.getByText("Cadastrar Vaga")).toBeInTheDocument();
   });
 
-  it.only("create new job", async () => {
+  it("create new job", async () => {
     const { user, container } = setup(
       <JobPostForm
         stackAllOptions={stackAllOptions}
